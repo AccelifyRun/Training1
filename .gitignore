@@ -68,3 +68,10 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+/Training.iml
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/
+.idea/misc.xml
+/.idea/
+/pom.xml
