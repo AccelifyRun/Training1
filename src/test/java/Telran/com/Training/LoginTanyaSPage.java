@@ -4,6 +4,7 @@ import Telran.com.pages.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by Boss on 25.07.2016.
@@ -52,7 +53,28 @@ public class LoginTanyaSPage extends Page {
 
     public LoginTanyaSPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
+    public void fillUsernameField(String username) {
+        setElementText(usernameField, username);
+    }
+
+    public void fillFirstNameField(String firstName) {
+        setElementText(firstNameTxt, firstName);
+    }
+
+    public void fillLastNameField(String lastname) {
+        setElementText(lastNameTxt, lastname);
+    }
+
+
+    public void fillEmailField(String email) {
+        setElementText(Email, email);
+    }
+
+    public void clickToAddNewUser() {
+        clickElement(AddNewUser);
+    }
 
 }
