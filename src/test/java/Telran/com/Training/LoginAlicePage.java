@@ -4,6 +4,7 @@ import Telran.com.pages.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by Лис on 24.07.2016.
@@ -53,7 +54,19 @@ public class LoginAlicePage extends Page {
 
     public LoginAlicePage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
+    public void fillUsernameField(String username) {
+        setElementText(usernameField, username);
+    }
+
+    public void fillUserFirstnameField(String userfirstname) {
+        setElementText(userFirstnameField, userfirstname);
+    }
+
+    public void fillUserLastnameField(String userlastname) {
+        setElementText(userLastnameField, userlastname);
+    }
 
 }
