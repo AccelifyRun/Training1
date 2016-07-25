@@ -1,5 +1,6 @@
-package Telran.com.pages;
+package Telran.com.Training;
 
+import Telran.com.pages.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Boss on 25.07.2016.
  */
-public class LoginTanyaPage extends Page {
+public class LoginTanyaSPage extends Page {
 
 
     @FindBy(id = "MainContent_LoginUser_UserName")
@@ -49,7 +50,7 @@ public class LoginTanyaPage extends Page {
     @FindBy(id = "MainContent_AddNewUser")
     WebElement AddNewUser;
 
-    public LoginTanyaPage(WebDriver driver) {
+    public LoginTanyaSPage(WebDriver driver) {
         super(driver);
     }
 
