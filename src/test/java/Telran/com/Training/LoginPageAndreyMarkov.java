@@ -1,5 +1,6 @@
-package Telran.com.pages;
+package Telran.com.Training;
 
+import Telran.com.pages.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
