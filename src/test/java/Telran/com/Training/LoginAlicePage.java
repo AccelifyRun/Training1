@@ -40,7 +40,7 @@ public class LoginAlicePage extends Page {
     @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactPhoneTxt")
     WebElement userlandlinePhoneField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_AddressTxt")
-    WebElement userStreetnameField;
+    WebElement userStreetField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_HouseNumberTxt")
     WebElement userHouseNumField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CityTxt")
@@ -67,6 +67,76 @@ public class LoginAlicePage extends Page {
 
     public void fillUserLastnameField(String userlastname) {
         setElementText(userLastnameField, userlastname);
+    }
+
+    public void fillUserEmailField(String useremail) {
+        setElementText(userEmailField, useremail);
+    }
+
+    public void fillUserPasswordField(String password) {
+        setElementText(userPasswordField, password);
+    }
+
+    public void fillUserPassConfField(String password) {
+        setElementText(userPassConfField, password);
+    }
+
+    public void fillUserPersIDfield(String id) {
+        setElementText(userPersIDfield, id);
+    }
+
+    public void clickUserRole() {
+        clickElement(userRole);
+    }
+
+    public void clickClinicAdminField() {
+        clickElement(isClinicAdminField);
+    }
+
+    public void fillClinicNameField(String clinicName) {
+        setElementText(clinicNameField, clinicName);
+    }
+
+    public void clickOrganizationNameField() {
+        clickElement(organizationNameField);
+    }
+
+    public void fillUserBDayField(String bday) {
+        setElementText(userBDayField, bday);
+    }
+
+    public void fillUserCellphoneField(String cellphone) {
+        setElementText(userCellphoneField, cellphone);
+        //choose String couse it might be a number with signs "-" or "." "("
+    }
+
+    public void fillUserlandlinePhoneField(String linephone) {
+        setElementText(userlandlinePhoneField, linephone);
+    }
+
+    public void fillUserStreetField(String street) {
+        setElementText(userStreetField, street);
+    }
+
+    public void fillUserHouseNumField(String housenum) {
+        setElementText(userHouseNumField, housenum);
+        //choose String couse it might be a number with letter "11A"
+    }
+
+    public void fillUserCityField(String city) {
+        setElementText(userCityField, city);
+    }
+
+    public void fillUserCountryField(String country) {
+        setElementText(userCountryField, country);
+    }
+
+    public void clickConfirmAddUserBtn() {
+        clickElement(confirmAddUserBtn);
+    }
+
+    public void clickCancelAddUserBtn() {
+        clickElement(cancelAddUserBtn);
     }
 
 }
