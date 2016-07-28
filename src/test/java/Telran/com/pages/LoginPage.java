@@ -15,7 +15,7 @@ public class LoginPage extends Page {
     WebElement usernameField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
     WebElement firstName;
-    @FindBy(id = "MainContent_AddNewUser")
+    @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
     WebElement AddNewUser;
 
     public LoginPage(WebDriver driver) {
@@ -30,8 +30,12 @@ public class LoginPage extends Page {
 
     }
 
-    public void ClickToAddNewUser() {
+
+    public void clickToAddNewUser() {
         clickElement(AddNewUser);
     }
 
+    public void openLoginPage() {
+        driver.get("http://dhclinicappv2stg.item-soft.co.il/SitePages/createUser.aspx?ReturnUrl=HomePage");
+    }
 }

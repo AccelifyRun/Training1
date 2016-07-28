@@ -101,9 +101,9 @@ public class LoginAlicePage extends Page {
         clickElement(organizationNameDropDown);
     }
 
-    public void clickDropdownNameField() {
+    public void clickDropdownNameField(String value) {
         clickElement(organizationNameDropDown);
-        selectValueInDropdown(organizationNameDropDown, "2");
+        selectValueInDropdown(organizationNameDropDown, value);
     }
 
     public void fillUserBDayField(String bday) {
