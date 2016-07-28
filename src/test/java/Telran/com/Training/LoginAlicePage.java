@@ -32,7 +32,7 @@ public class LoginAlicePage extends Page {
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_clinicNameTxt")
     WebElement clinicNameField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL")
-    WebElement organizationNameField;
+    WebElement organizationNameDropDown;
     @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_birthdayTxt_dateInput")
     WebElement userBDayField;
     @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactCellTxt")
@@ -98,7 +98,12 @@ public class LoginAlicePage extends Page {
     }
 
     public void clickOrganizationNameField() {
-        clickElement(organizationNameField);
+        clickElement(organizationNameDropDown);
+    }
+
+    public void clickDropdownNameField() {
+        clickElement(organizationNameDropDown);
+        selectValueInDropdown(organizationNameDropDown, "2");
     }
 
     public void fillUserBDayField(String bday) {
