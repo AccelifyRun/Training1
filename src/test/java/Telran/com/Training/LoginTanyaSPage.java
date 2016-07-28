@@ -58,6 +58,7 @@ public class LoginTanyaSPage extends Page {
     }
 
     public void fillUsernameField(String username) {
+
         setElementText(usernameField, username);
     }
 
@@ -78,11 +79,14 @@ public class LoginTanyaSPage extends Page {
 
 
     public void fillEmailField(String email) {
+
         setElementText(Email, email);
     }
 
     public void clickToAddNewUser() {
+
         clickElement(AddNewUser);
     }
+
 
 }
