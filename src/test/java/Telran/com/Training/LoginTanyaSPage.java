@@ -47,7 +47,8 @@ public class LoginTanyaSPage extends Page {
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_clinicNameTxt")
     WebElement clinivNameTxt;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL")
-    WebElement OrganizationDDL;
+    WebElement organizationNameDropDown;
+
     @FindBy(id = "MainContent_AddNewUser")
     WebElement AddNewUser;
 
@@ -67,6 +68,13 @@ public class LoginTanyaSPage extends Page {
     public void fillLastNameField(String lastname) {
         setElementText(lastNameTxt, lastname);
     }
+
+    public void clickDropdownNameField() {
+        clickElement(organizationNameDropDown);
+        selectValueInDropdown(organizationNameDropDown, "2");
+    }
+
+
 
 
     public void fillEmailField(String email) {
