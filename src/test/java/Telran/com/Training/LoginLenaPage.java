@@ -11,6 +11,9 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LoginLenaPage extends Page {
 
+    @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
+    WebElement registerHyperLink;
+
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
     WebElement usernameField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
@@ -59,6 +62,10 @@ public class LoginLenaPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
+    public void registerUser() {
+        clickElement(registerHyperLink);
+    }
+
     public void filluserName(String username) {
         setElementText(usernameField, username);
     }
@@ -87,11 +94,11 @@ public class LoginLenaPage extends Page {
         setElementText(personalIdField, id);
     }
 
-    public void clikuserRole() {
+    public void clickuserRole() {
         clickElement(userroleField);
     }
 
-    public void clikposition() {
+    public void clickposition() {
         clickElement(clikpositionclinicAdmin);
     }
 
@@ -99,9 +106,9 @@ public class LoginLenaPage extends Page {
         setElementText(clinicnameField, clinikName);
     }
 
-    public void clikOrganizationType(String orgName) {
+    public void clickOrganizationType() {
         clickElement(organizationTypeDropDown);
-        selectValueInDropdownbyText(organizationTypeDropDown, orgName);
+        selectValueInDropdown(organizationTypeDropDown, "2");
     }
 
     public void fillbirthdayDate(String date) {
@@ -132,12 +139,13 @@ public class LoginLenaPage extends Page {
         setElementText(countryField, country);
     }
 
-    public void clikNewUser() {
+    public void clickNewUser() {
         clickElement(addnewuserClik);
     }
 
-    public void clikCancelButton() {
+    public void clickCancelButton() {
         clickElement(cancellinkbuttonClik);
     }
+
 
 }
