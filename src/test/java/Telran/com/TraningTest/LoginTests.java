@@ -43,7 +43,7 @@ public class LoginTests {
         // Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
         // Log.info("TestLoginWithExtData stoped....");
     }
-
+//
 
     // test of clicking on Registration link are written in another class
 
