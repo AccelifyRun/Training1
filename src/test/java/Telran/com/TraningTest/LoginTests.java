@@ -44,7 +44,6 @@ public class LoginTests {
         // Log.info("TestLoginWithExtData stoped....");
     }
 
-
     // test of clicking on Registration link are written in another class
 
     @AfterClass(alwaysRun = true)
