@@ -6,10 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 /**
  * Created by Lena on 7/28/2016.
  */
 public class LoginLenaPage extends Page {
+
 
     @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
     WebElement registerHyperLink;
@@ -55,13 +58,15 @@ public class LoginLenaPage extends Page {
     WebElement addnewuserClik;
     @FindBy(id = "MainContent_LinkButton1")
     WebElement cancellinkbuttonClik;
+    @FindBy(id = "Top1_HeadLoginStatus")
+    WebElement loginButton;
 
     public LoginLenaPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public void registerUser() {
+    public void clickRegisterUser() {
         clickElement(registerHyperLink);
     }
 
@@ -145,6 +150,19 @@ public class LoginLenaPage extends Page {
     public void clickCancelButton() {
         clickElement(cancellinkbuttonClik);
     }
+
+    public LoginLenaPage waitUntilLoginPageIsLoaded() {
+        try {
+            waitUntilElementIsLoaded(loginButton);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
 
 
 }
