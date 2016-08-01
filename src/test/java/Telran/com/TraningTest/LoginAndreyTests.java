@@ -25,13 +25,14 @@ public class LoginAndreyTests {
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
-        loginPage = PageFactory.initElements(driver, LoginPage.class);
-        loginPageAndrey = PageFactory.initElements(driver, LoginPageAndrey.class);
-        driver = new ChromeDriver();
+
     }
 
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        loginPageAndrey = PageFactory.initElements(driver, LoginPageAndrey.class);
+        driver = new ChromeDriver();
 
     }
 
