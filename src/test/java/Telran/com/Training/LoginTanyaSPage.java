@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 /**
  * Created by Boss on 25.07.2016.
  */
@@ -158,5 +160,33 @@ public class LoginTanyaSPage extends Page {
         clickElement(LinkButton1);
     }
 
+    public LoginTanyaSPage waitUntilLoginPageIsLoaded() {
+        try {
+            waitUntilElementIsLoaded(registerHyperLink);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
+    public LoginTanyaSPage waitUntilLoginPageIsLoaded2() {
+        try {
+            waitUntilElementIsLoaded(AddNewUser);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
+
+
 
 }
+
+
