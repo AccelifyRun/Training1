@@ -11,7 +11,8 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LoginTanyaSPage extends Page {
 
-
+    @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
+    WebElement registerHyperLink;
     @FindBy(id = "MainContent_LoginUser_UserName")
     WebElement usernameField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
@@ -45,12 +46,15 @@ public class LoginTanyaSPage extends Page {
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_IsClinicAdmin")
     WebElement IsClinicAdmin;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_clinicNameTxt")
-    WebElement clinivNameTxt;
+    WebElement clinicNameTxt;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL")
     WebElement organizationNameDropDown;
 
     @FindBy(id = "MainContent_AddNewUser")
     WebElement AddNewUser;
+
+    @FindBy(id = "MainContent_LinkButton1")
+    WebElement LinkButton1;
 
     public LoginTanyaSPage(WebDriver driver) {
         super(driver);
@@ -70,6 +74,71 @@ public class LoginTanyaSPage extends Page {
         setElementText(lastNameTxt, lastname);
     }
 
+    public void fillEmailField(String email) {
+        setElementText(Email, email);
+    }
+
+    public void fillPassword(String password) {
+        setElementText(Password, password);
+    }
+
+    public void fillConfirmPassword(String conPassword) {
+        setElementText(ConfirmPassword, conPassword);
+    }
+
+    public void fillPersonalId(String perID) {
+        setElementText(PersonalIdTxt, perID);
+    }
+
+
+    public void fillBirthday(String birthday) {
+        setElementText(dateInput, birthday);
+    }
+
+    public void fillContactCellTxt(String mobPhone) {
+        setElementText(ContactCellTxt, mobPhone);
+    }
+
+    public void fillContactPhoneTxt(String housePhone) {
+        setElementText(ContactPhoneTxt, housePhone);
+    }
+
+    public void fillAddressTxt(String address) {
+        setElementText(AddressTxt, address);
+    }
+
+    public void fillHouseNumberTxt(String houseNum) {
+        setElementText(HouseNumberTxt, houseNum);
+    }
+
+    public void fillCityTxt(String city) {
+        setElementText(CityTxt, city);
+    }
+
+    public void fillCountryTxt(String country) {
+        setElementText(CountryTxt, country);
+    }
+
+    public void fillClinicaName(String clinicName) {
+        setElementText(clinicNameTxt, clinicName);
+    }
+
+
+    public void clickRegisterHyperLink() {
+        clickElement(registerHyperLink);
+    }
+
+    public void clickRolesDD1() {
+        clickElement(rolesDD1);
+        selectValueInDropdown(rolesDD1, "1");
+    }
+
+    public void clickFieldClinicAdmin() {
+        clickElement(IsClinicAdmin);
+    }
+
+
+
     public void clickDropdownNameField() {
         clickElement(organizationNameDropDown);
         selectValueInDropdown(organizationNameDropDown, "2");
@@ -78,14 +147,15 @@ public class LoginTanyaSPage extends Page {
 
 
 
-    public void fillEmailField(String email) {
 
-        setElementText(Email, email);
-    }
 
     public void clickToAddNewUser() {
 
         clickElement(AddNewUser);
+    }
+
+    public void clickBy() {
+        clickElement(LinkButton1);
     }
 
 
