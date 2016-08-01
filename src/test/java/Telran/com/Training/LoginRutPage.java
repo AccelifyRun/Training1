@@ -61,5 +61,6 @@ public class LoginRutPage extends Page {
     public void openLoginPage() {
         driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
     }
+    //
 
 }
