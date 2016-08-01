@@ -42,7 +42,7 @@ public class LoginTanyaSTests {
         loginTanyaSPage.fillUsernameField("Tanya");
         loginTanyaSPage.fillFirstNameField("Tanya");
         loginTanyaSPage.fillLastNameField("Sul");
-        loginTanyaSPage.fillEmailField("tan3su@fmail.com");
+        loginTanyaSPage.fillEmailField("tan3su@gmail.com");
         loginTanyaSPage.fillPassword("12345Tan%");
         loginTanyaSPage.fillConfirmPassword("12345Tan%");
         loginTanyaSPage.fillPersonalId("332441153");
