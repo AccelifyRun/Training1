@@ -5,10 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.IOException;
+
 /**
  * Created by rut on 01.08.2016.
  */
-public class CreateUserRutPage extends Page {
+public class RegistrationRutPage extends Page {
 
     //fields
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
@@ -49,6 +51,8 @@ public class CreateUserRutPage extends Page {
     WebElement cancellationButton;
     @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_birthdayTxt_CalendarPopupButton")
     WebElement calendarButton;
+    @FindBy(id = "Top1_HeadLoginStatus")
+    WebElement loginStatusButton;
 
     //dropdowns
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_rolesDDl")
@@ -110,7 +114,7 @@ public class CreateUserRutPage extends Page {
     @FindBy(id = "")
     WebElement Error;
 
-    public CreateUserRutPage(WebDriver driver) {
+    public RegistrationRutPage(WebDriver driver) {
         super(driver);
     }
     public void CreateUserRutPage() {
@@ -178,5 +182,9 @@ public class CreateUserRutPage extends Page {
     }
     public void clickOnCancellationButton() {
         clickElement(cancellationButton);
+    }
+
+    public void isOnRegistrationPage() throws IOException, InterruptedException {
+        waitUntilElementIsLoaded(loginStatusButton);
     }
 }

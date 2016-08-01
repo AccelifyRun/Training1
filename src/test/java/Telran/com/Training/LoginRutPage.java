@@ -1,6 +1,8 @@
 package Telran.com.Training;
 
+import Telran.com.LogLog4j;
 import Telran.com.pages.Page;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
  * Created by rut on 01.08.2016.
  */
 public class LoginRutPage extends Page {
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
     //fields
     @FindBy(id = "MainContent_LoginUser_UserName")
@@ -20,7 +23,7 @@ public class LoginRutPage extends Page {
     //buttons
     @FindBy(xpath = "//*[@class ='forgot'][contains(text(),'שכחת סיסמא?')]")
     WebElement forgotPasswordButton;
-    @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
+    @FindBy(xpath = "//*[@id='MainContent_LoginUser_RegisterHyperLink']")
     WebElement addNewUserButton;
     @FindBy(id = "MainContent_LoginUser_LoginButton")
     WebElement continueButton;
@@ -47,6 +50,7 @@ public class LoginRutPage extends Page {
 
     //clicking the buttons
     public void clickToAddNewUser() {
+        Log.info("Clicking to addNewUserButton");
         clickElement(addNewUserButton);
     }
 
@@ -61,6 +65,5 @@ public class LoginRutPage extends Page {
     public void openLoginPage() {
         driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
     }
-    //
 
 }
