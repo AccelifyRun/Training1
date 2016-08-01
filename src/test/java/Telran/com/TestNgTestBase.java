@@ -1,18 +1,15 @@
 package Telran.com;
 
-import java.io.IOException;
-
-import org.openqa.selenium.WebDriver;
+import Telran.com.util.PropertyLoader;
 import org.openqa.selenium.Capabilities;
-
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import ru.stqa.selenium.factory.WebDriverFactory;
 import ru.stqa.selenium.factory.WebDriverFactoryMode;
 
-import Telran.com.util.PropertyLoader;
+import java.io.IOException;
 
 /**
  * Base class for TestNG-based test classes
@@ -34,11 +31,12 @@ public class TestNgTestBase {
     }
     capabilities = PropertyLoader.loadCapabilities();
     WebDriverFactory.setMode(WebDriverFactoryMode.THREADLOCAL_SINGLETON);
+    driver = WebDriverFactory.getDriver(gridHubUrl, capabilities);
   }
 
   @BeforeMethod
   public void initWebDriver() {
-    driver = WebDriverFactory.getDriver(gridHubUrl, capabilities);
+
   }
 
   @AfterSuite(alwaysRun = true)

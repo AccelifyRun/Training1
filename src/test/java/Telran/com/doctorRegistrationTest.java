@@ -4,7 +4,7 @@ package Telran.com;
 */
 
 
-import Telran.com.pages.LoginIrinaPage;
+import Telran.com.pages.LoginMainPage;
 import Telran.com.pages.Page;
 import Telran.com.pages.RegistrationPage;
 import org.apache.log4j.Logger;
@@ -22,7 +22,7 @@ public class doctorRegistrationTest extends TestNgTestBase {
 
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName()); //Необходимо для написания логов
     public RegistrationPage registrationPage;
-    public LoginIrinaPage loginIrinaPage;
+    public LoginMainPage loginMainPage;
     public Page page;
     long millis = System.currentTimeMillis();
     private StringBuffer verificationErrors = new StringBuffer();
@@ -35,7 +35,7 @@ public class doctorRegistrationTest extends TestNgTestBase {
     public void setUp() throws Exception {
         // driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
         registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
-        loginIrinaPage = PageFactory.initElements(driver, LoginIrinaPage.class);
+        loginMainPage = PageFactory.initElements(driver, LoginMainPage.class);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
@@ -43,7 +43,7 @@ public class doctorRegistrationTest extends TestNgTestBase {
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {
         try {
-            loginIrinaPage
+            loginMainPage
                     .openLoginPage(driver)
                     .openRegistrationPage();
         } catch (Exception e) {
@@ -87,7 +87,7 @@ public class doctorRegistrationTest extends TestNgTestBase {
         }
 
         Log.info("Creating new doctor by  saving the data in database");
-        Assert.assertTrue((loginIrinaPage.isOnLoginPage()), "You are not on Login Page now!!!");
+        Assert.assertTrue((loginMainPage.isOnLoginPage()), "You are not on Login Page now!!!");
         Assert.assertFalse(registrationPage.isOnRegistrationPage(), "You are still on Registration Page now!!!");
 
     }
@@ -432,7 +432,7 @@ public class doctorRegistrationTest extends TestNgTestBase {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Assert.assertTrue((loginIrinaPage.isOnLoginPage()), "You are not on Login Page now!!!");
+            Assert.assertTrue((loginMainPage.isOnLoginPage()), "You are not on Login Page now!!!");
             Assert.assertTrue((registrationPage.isOnRegistrationPage()), "You are not on Registration Page now!!!");
             Assert.assertTrue((registrationPage.alertMessageNotValidFirstName()), "First name is not valid");
             Assert.assertTrue((registrationPage.alertMessageNotValidLastName()), "Last name is not valid");

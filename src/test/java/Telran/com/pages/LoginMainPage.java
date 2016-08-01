@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by Iakov Volf,Oleg
  */
-public class LoginIrinaPage extends Page {
+public class LoginMainPage extends Page {
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     @FindBy(id = "MainContent_LoginUser_Password")
     WebElement passwordField;
@@ -35,18 +35,18 @@ public class LoginIrinaPage extends Page {
     private WebElement wrongPasswordAlert;
 
 
-    public LoginIrinaPage(WebDriver driver) {
+    public LoginMainPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = "http://dhclinicappv2stg.item-soft.co.il/Login.aspx";
         PageFactory.initElements(driver, this);
     }
 
-    public LoginIrinaPage openLoginPage(WebDriver driver) {
+    public LoginMainPage openLoginPage(WebDriver driver) {
         driver.get(PAGE_URL);
         return this;
     }
 
-    public LoginIrinaPage login(String username, String password) {
+    public LoginMainPage login(String username, String password) {
         openLoginPage(driver);
         waitUntilLoginPageIsLoaded();
         fillUsernameField(username);
@@ -56,20 +56,20 @@ public class LoginIrinaPage extends Page {
     }
 //Fill the fileds
 
-    public LoginIrinaPage fillUsernameField(String username) {
+    public LoginMainPage fillUsernameField(String username) {
         setElementText(usernameField, username);
         Log.info("UserName was incerted");
         return this;
     }
 
-    public LoginIrinaPage fillPasswordField(String password) {
+    public LoginMainPage fillPasswordField(String password) {
         setElementText(passwordField, password);
         Log.info("entering password from the list: " + password + " ");
         return this;
     }
 
 
-    public LoginIrinaPage waitUntilLoginPageIsLoaded() {
+    public LoginMainPage waitUntilLoginPageIsLoaded() {
         try {
             waitUntilElementIsLoaded(loginButton);
         } catch (IOException e) {
