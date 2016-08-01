@@ -2,7 +2,6 @@ package Telran.com;
 
 import Telran.com.Training.LoginAlicePage;
 import Telran.com.pages.LoginPage;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -22,7 +21,7 @@ public class LoginTests extends TestNgTestBase {
     public void setup() {
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginAlicePage = PageFactory.initElements(driver, LoginAlicePage.class);
-        driver = new InternetExplorerDriver();
+//        driver = new InternetExplorerDriver();
     }
 
     @BeforeMethod(alwaysRun = true)

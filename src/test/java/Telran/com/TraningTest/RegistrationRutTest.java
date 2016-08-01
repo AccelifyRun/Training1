@@ -40,12 +40,15 @@ public class RegistrationRutTest {
 
     @Test
     public void testLoginWithExtData() throws IOException, InterruptedException {
-        driver.get("http://dhclinicappv2stg.item-soft.co.il");
         Log.info("TestLoginWithExtData was started....");
-        loginRutPage.clickToAddNewUser();
-        registrationRutPage.isOnRegistrationPage();
-        registrationRutPage.fillFirstNameField("aaa");
-        registrationRutPage.fillLastNameField("bbb");
+        registrationRutPage.fillUsernameField("555Doctor");
+        registrationRutPage.fillFirstNameField("name");
+        registrationRutPage.fillLastNameField("lastname");
+        registrationRutPage.fillMailField("555Doctor@yopmail.com");
+        registrationRutPage.fillPasswordField("LinkCare!!11");
+        registrationRutPage.fillConfirmPasswordField("LinkCare!!11");
+        registrationRutPage.filllDField("687753996");
+        registrationRutPage.fillBirthdayField("11122012");
 //         Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
          Log.info("TestLoginWithExtData stoped....");
     }
