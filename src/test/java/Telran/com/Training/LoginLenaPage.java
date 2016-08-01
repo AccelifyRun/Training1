@@ -13,7 +13,6 @@ public class LoginLenaPage extends Page {
 
     @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
     WebElement registerHyperLink;
-
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
     WebElement usernameField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
