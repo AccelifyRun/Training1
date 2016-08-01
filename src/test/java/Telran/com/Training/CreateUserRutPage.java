@@ -56,7 +56,6 @@ public class CreateUserRutPage extends Page {
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL")
     WebElement organizationDropdown;
 
-
     //checkboxes
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_IsClinicAdmin")
     WebElement clinicAdminCheckbox;
@@ -65,7 +64,84 @@ public class CreateUserRutPage extends Page {
         super(driver);
     }
 
-    public void openLoginPage() {
+    public void CreateUserRutPage() {
         driver.get("http://dhclinicappv2stg.item-soft.co.il/SitePages/createUser.aspx?ReturnUrl=HomePage");
+    }
+
+    //filling the fields
+    public void fillUsernameField(String username) {
+        setElementText(usernameField, username);
+    }
+
+    public void fillFirstNameField(String firstName) {
+        setElementText(firstNameField, firstName);
+    }
+
+    public void fillLastNameField(String lastName) {
+        setElementText(lastNameField, lastName);
+    }
+
+    public void fillMailField(String mail) {
+        setElementText(mailField, mail);
+    }
+
+    public void fillPasswordField(String password) {
+        setElementText(passwordField, password);
+    }
+
+    public void fillConfirmPasswordField(String password) {
+        setElementText(confirmPasswordField, password);
+    }
+
+    public void filllDField(String id) {
+        setElementText(idField, id);
+    }
+
+    // TODO: 01.08.2016
+    public void fillBirthdayField(String birthday) {
+        setElementText(birthdayField, birthday);
+    }
+
+    public void fillMobilePhoneField(String mobilePhone) {
+        setElementText(mobilePhoneField, mobilePhone);
+    }
+
+    public void fillPhoneField(String phone) {
+        setElementText(phoneField, phone);
+    }
+
+    public void fillStreetField(String street) {
+        setElementText(streetField, street);
+    }
+
+    public void fillHouseField(String house) {
+        setElementText(houseField, house);
+    }
+
+    public void fillCityField(String city) {
+        setElementText(cityField, city);
+    }
+
+    public void fillCountryField(String country) {
+        setElementText(countryField, country);
+    }
+
+    public void fillClinicNameField(String clinicName) {
+        setElementText(clinicNameField, clinicName);
+    }
+
+    //clicking on dropdowns
+    public void clickOnOrganizationDropdown(String value) {
+        clickElement(organizationDropdown);
+        selectValueInDropdown(organizationDropdown, value);
+    }
+
+    //clicking on the buttons
+    public void clickOnAddUserButton() {
+        clickElement(addUserButton);
+    }
+
+    public void clickOnCancellationButton() {
+        clickElement(cancellationButton);
     }
 }
