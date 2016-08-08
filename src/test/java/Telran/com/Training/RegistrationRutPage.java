@@ -22,7 +22,7 @@ public class RegistrationRutPage extends Page {
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_Email")
     WebElement mailField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_Password")
-    WebElement passwordField;
+    WebElement passwordField; //15
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ConfirmPassword")
     WebElement confirmPasswordField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PersonalIdTxt")
@@ -76,7 +76,7 @@ public class RegistrationRutPage extends Page {
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_EmailRequired")
     WebElement emailWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired")
-    WebElement passwordWarning; //15
+    WebElement passwordWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired")
     WebElement confirmPasswordWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator1")
@@ -92,13 +92,15 @@ public class RegistrationRutPage extends Page {
 
     //errors
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator2")
-    WebElement usernameError;   //15, numbers or letters
+    WebElement usernameError;   //15, not simbols, only letters and numbers
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator1")
     WebElement firstNameError;  //15, only letters
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator3")
     WebElement lastNameError;   //15, only letters
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_regexEmailValid")
     WebElement mailError;       //not valid
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CustomValidator3")
+    WebElement passwordError;   // 15, סיסמא לא יכולה להכיל את שם המשתמש.
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PasswordCompare")
     WebElement confirmPasswordError;    //not valid
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CVPersonalId")
@@ -111,8 +113,6 @@ public class RegistrationRutPage extends Page {
     WebElement houseError;  //10, not simbols, only letters and numbers
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator6")
     WebElement cityError;    //15, only letters and numbers, not simbols
-    @FindBy(id = "")
-    WebElement Error;
 
     public RegistrationRutPage(WebDriver driver) {
         super(driver);

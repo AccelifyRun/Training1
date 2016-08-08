@@ -1,7 +1,8 @@
-package Telran.com;
+package Telran.com.TraningTest;
 
-import Telran.com.Training.LoginAlicePage;
-import Telran.com.pages.LoginPage;
+import Telran.com.Training.LoginAfoninaPage;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -9,35 +10,37 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 //@org.testng.annotations.Listeners(FailTestScreenshotListener.class)
-public class LoginTests extends TestNgTestBase {
+public class LoginAfoninaTests {
     // private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-    public static String registered_username = "3339Doctor";
-    public static String registered_password = "LinkCare!!11";
-    public LoginPage loginPage;
-    public LoginAlicePage loginAlicePage;
-    // public WebDriver driver;
+    public static String username = "3339Doctor";
+    public static String password = "LinkCare!!11";
+    public LoginAfoninaPage loginAfoninaPage;
+    public WebDriver driver;
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
-        loginPage = PageFactory.initElements(driver, LoginPage.class);
-        loginAlicePage = PageFactory.initElements(driver, LoginAlicePage.class);
-//        driver = new InternetExplorerDriver();
+        driver = new ChromeDriver();
+        loginAfoninaPage = PageFactory.initElements(driver, LoginAfoninaPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {
-
-
+        driver.get("http://dhclinicappv2stg.item-soft.co.il");
+        loginAfoninaPage.openLoginPage();
     }
 
     @Test
     public void testLoginWithExtData() {
-        driver.get("http://dhclinicappv2stg.item-soft.co.il");
+
         // Log.info("TestLoginWithExtData was started....");
-        loginPage.clickToAddNewUser();
-        loginPage.fillusernameField("Username");
-        loginAlicePage.fillUserFirstnameField("FirstName");
-        loginAlicePage.clickDropdownNameField("2");
+        loginAfoninaPage.waitUntilLoginButtonIsLoaded();
+        loginAfoninaPage.clickUserName();
+        loginAfoninaPage.fillUserNameField(username);
+        loginAfoninaPage.clickPassord();
+        loginAfoninaPage.fillPassword(password);
+        loginAfoninaPage.clickconfirmUsingCheckBox();
+        loginAfoninaPage.clickLoginButton();
+
         // Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
         // Log.info("TestLoginWithExtData stoped....");
     }
