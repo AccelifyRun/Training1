@@ -22,7 +22,7 @@ public class RegistrationRutPage extends Page {
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_Email")
     WebElement mailField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_Password")
-    WebElement passwordField; //15
+    WebElement passwordField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ConfirmPassword")
     WebElement confirmPasswordField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PersonalIdTxt")

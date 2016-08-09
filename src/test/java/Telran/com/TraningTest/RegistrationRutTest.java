@@ -40,7 +40,7 @@ public class RegistrationRutTest {
 
     @Test
     public void testLoginWithExtData() throws IOException, InterruptedException {
-        Log.info("TestLoginWithExtData was started....");
+        Log.info("TestLoginWithExtData was started...");
         registrationRutPage.fillUsernameField("555Doctor");
         registrationRutPage.fillFirstNameField("name");
         registrationRutPage.fillLastNameField("lastname");
@@ -49,8 +49,14 @@ public class RegistrationRutTest {
         registrationRutPage.fillConfirmPasswordField("LinkCare!!11");
         registrationRutPage.filllDField("687753996");
         registrationRutPage.fillBirthdayField("11122012");
+        registrationRutPage.fillMobilePhoneField("1111111111");
+        registrationRutPage.fillPhoneField("222222222");
+        registrationRutPage.fillStreetField("Morgentau");
+        registrationRutPage.fillHouseField("5");
+        registrationRutPage.fillCityField("Jerusalem");
+        registrationRutPage.clickOnAddUserButton();
 //         Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
-         Log.info("TestLoginWithExtData stoped....");
+         Log.info("TestLoginWithExtData stoped...");
     }
 
     @AfterClass(alwaysRun = true)

@@ -23,7 +23,7 @@ public class LoginRutPage extends Page {
     //buttons
     @FindBy(xpath = "//*[@class ='forgot'][contains(text(),'שכחת סיסמא?')]")
     WebElement forgotPasswordButton;
-    @FindBy(xpath = "//*[@id='MainContent_LoginUser_RegisterHyperLink']")
+    @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
     WebElement addNewUserButton;
     @FindBy(id = "MainContent_LoginUser_LoginButton")
     WebElement continueButton;
@@ -34,36 +34,42 @@ public class LoginRutPage extends Page {
     @FindBy(id = "MainContent_LoginUser_CBAgreeToTerms")
     WebElement agreeCheckbox;
 
+    //warnings
+    @FindBy(xpath = "//*[@id='MainContent_LoginUser_LoginUserValidationSummary']/ul/li[1]")
+    WebElement emptyUserNameWarning;
+    @FindBy(xpath = "//*[@id='MainContent_LoginUser_LoginUserValidationSummary']/ul/li[2]")
+    WebElement emptyPasswordWarning;
+
+    //errors
+    @FindBy(xpath = "//span[@class='failureNotification'][contains(text(),'ניסיון ההתחברות שלך לא הצליח. אנא נסה שוב')]")
+    WebElement connectionError;
+
     public LoginRutPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
+    }
+    public void openLoginPage() {
+        driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
     }
 
     //fill the fields
     public void fillUsernameField(String username) {
         setElementText(usernameField, username);
     }
-
     public void fillPasswordField(String password) {
         setElementText(passwordField, password);
     }
 
-    //clicking the buttons
+    //clicking on the buttons
     public void clickToAddNewUser() {
         Log.info("Clicking to addNewUserButton");
         clickElement(addNewUserButton);
     }
-
     public void clickToForgotPassword() {
         clickElement(forgotPasswordButton);
     }
-
     public void clickToContinue() {
         clickElement(continueButton);
-    }
-
-    public void openLoginPage() {
-        driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
     }
 
 }
