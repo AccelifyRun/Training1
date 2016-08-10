@@ -1,6 +1,8 @@
 package Telran.com.Training;
 
 import Telran.com.pages.Page;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,11 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
+
 /**
  * Created by Natalia on 7/24/2016.
  */
 public class RegisrtationAfoninaPage extends Page {
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName'")
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
     WebElement userName;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
     WebElement firstName;
@@ -30,7 +34,7 @@ public class RegisrtationAfoninaPage extends Page {
     WebElement rolesDDI;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_IsClinicAdmin")
     WebElement IsClinicAdmin;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_clinicNameTxt")
+    @FindBy(xpath = " //*[@id='MainContent_RegisterUser_CreateUserStepContainer_clinicNameTxt']")
     WebElement clinicName;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL")
     WebElement OrganizationDDL;
@@ -40,7 +44,7 @@ public class RegisrtationAfoninaPage extends Page {
     WebElement CalendarPopupButton;
     @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactCellTxt")
     WebElement ContactCell;
-    @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactPhoneTxt")
+    @FindBy(xpath = "//input[@id = 'ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactPhoneTxt']")
     WebElement ContactPhone;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_AddressTxt")
     WebElement Address;
@@ -55,8 +59,24 @@ public class RegisrtationAfoninaPage extends Page {
     @FindBy(id = "MainContent_LinkButton1")
     WebElement LinkButton1;
 
-    @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
-    WebElement RegisterHyperLink;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_organizationNameTxt")
+    WebElement OrganizationNameTxt;
+
+    @FindBy(xpath = " //*[@id='MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL']//option[@value=\"2\"]")
+    WebElement PrivateDoctor;
+
+    @FindBy(xpath = " //*[@id='MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL']//option[@value=\"6\"]")
+    WebElement LetOrganization;
+
+    @FindBy(xpath = " //*[@id='MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL']//option[@value=\"19\"]")
+    WebElement MindyTest;
+
+    @FindBy(xpath = " //*[@id='MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL']//option[@value=\"32\"]")
+    WebElement MCHC;
+
+    @FindBy(id = "Top1_HeadLoginView_DisplayName")
+    WebElement AddedUser;
 
     public RegisrtationAfoninaPage(WebDriver driver) {
         super(driver);
@@ -64,7 +84,7 @@ public class RegisrtationAfoninaPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickEmail(String email) {
+    public void clickEmail() {
         clickElement(Email);
     }
 
@@ -236,13 +256,28 @@ public class RegisrtationAfoninaPage extends Page {
         clickElement(LinkButton1);
     }
 
-    public void clickRegisterHyperLink() {
-        clickElement(RegisterHyperLink);
+    public void clickDropdownNameField() {
+        clickElement(rolesDDI);
     }
 
-    public void clickDropdownNameField(String value) {
-        clickElement(rolesDDI);
-        selectValueInDropdown(rolesDDI, value);
+    public void clickDropdownPrivateDoctor() {
+        clickElement(PrivateDoctor);
+    }
+
+
+    public void clickLetOrganization() {
+        clickElement(OrganizationNameTxt);
+        clickElement(LetOrganization);
+    }
+
+    public void clickMindyTest() {
+        clickElement(OrganizationNameTxt);
+        clickElement(MindyTest);
+    }
+
+    public void clickMCHC() {
+        clickElement(OrganizationNameTxt);
+        clickElement(MCHC);
     }
 
     public void openLoginRegistrationPage() {
@@ -260,9 +295,9 @@ public class RegisrtationAfoninaPage extends Page {
         }
     }
 
-    public void waitUntilRegisterHyperLinkIsLoaded() {
+    public void waitUntilClinicNameIsLoaded() {
         try {
-            new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(RegisterHyperLink));
+            new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(clinicName));
         } catch (Exception e) {
             // Log.info("---------------------------------");
             // Log.info("element " + element + " can not be found by ExpectedConditions.visibilityOf(element)");
@@ -270,4 +305,33 @@ public class RegisrtationAfoninaPage extends Page {
             e.printStackTrace();
         }
     }
+
+
+    public void waitUntilAddNewUserIsDisappeared(String id) throws IOException, InterruptedException {
+        new WebDriverWait(driver, 25).until(ExpectedConditions.invisibilityOfElementLocated(By.id(id)));
+    }
+
+    public void waitUntilAddedUserIsLoaded() {
+        try {
+            new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(AddedUser));
+        } catch (Exception e) {
+            // Log.info("---------------------------------");
+            // Log.info("element " + element + " can not be found by ExpectedConditions.visibilityOf(element)");
+            //  Log.info("---------------------------------");
+            e.printStackTrace();
+        }
+    }
+
+    public boolean verifyAddedUserIsPresent() {
+        try {
+            AddedUser.getTagName();
+            return true;
+        } catch (NoSuchElementException e) {
+            //  Log.info("---------------------------------");
+            //  Log.info("element " + element + " can not be found by  element.getTagName()");
+            //   Log.info("---------------------------------");
+            return false;
+        }
+    }
 }
+
