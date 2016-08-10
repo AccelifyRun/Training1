@@ -8,12 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 /**
  * Created by rut on 01.08.2016.
  */
 public class LoginRutPage extends Page {
+    public static String username = "5555Doctor";
+    public static String password = "LinkCare!!11";
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-
     //fields
     @FindBy(id = "MainContent_LoginUser_UserName")
     WebElement usernameField;
@@ -29,6 +32,8 @@ public class LoginRutPage extends Page {
     WebElement continueButton;
     @FindBy(xpath = "//*[@target='_blank']")
     WebElement agreeTermsButton;
+    @FindBy(id = "Top1_HeadLoginStatus")
+    WebElement loginStatusButton;
 
     //checkBoxes
     @FindBy(id = "MainContent_LoginUser_CBAgreeToTerms")
@@ -72,4 +77,17 @@ public class LoginRutPage extends Page {
         clickElement(continueButton);
     }
 
+    public void isOnLoginPage() throws IOException, InterruptedException {
+        waitUntilElementIsLoaded(loginStatusButton);
+    }
+
+    public void waitUntilLoginPageIsLoded() throws IOException, InterruptedException {
+        waitUntilElementIsLoaded(continueButton);
+    }
+
+    public void loginDoctor() {
+        fillUsernameField(username);
+        fillPasswordField(password);
+        clickToContinue();
+    }
 }

@@ -68,27 +68,29 @@ public class RegistrationRutPage extends Page {
 
     //warnings
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserNameRequired")
-    WebElement userNameWarning;
+    WebElement userNameEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_FirsNameRequired")
-    WebElement firstNameWarning;
+    WebElement firstNameEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_LastNameRequired")
-    WebElement lastNameWarning;
+    WebElement lastNameEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_EmailRequired")
-    WebElement emailWarning;
+    WebElement emailEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired")
-    WebElement passwordWarning;
+    WebElement passwordEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired")
-    WebElement confirmPasswordWarning;
+    WebElement confirmPasswordEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator1")
-    WebElement idWarning;
+    WebElement idEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator2")
-    WebElement mobilePhoneWarning;
+    WebElement mobilePhoneEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator3")
-    WebElement streetWarning;
+    WebElement streetEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator5")
-    WebElement houseWarning;
+    WebElement houseEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator4")
-    WebElement cityWarning;
+    WebElement cityEmptyWarning;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ErrorMsgClinicName")
+    WebElement nameOfClinicEmptyWarning;
 
     //errors
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator2")
@@ -184,7 +186,12 @@ public class RegistrationRutPage extends Page {
         clickElement(cancellationButton);
     }
 
-    public void isOnRegistrationPage() throws IOException, InterruptedException {
-        waitUntilElementIsLoaded(loginStatusButton);
+    //waitings
+    public void waitUntilRegPageIsLoaded() throws IOException, InterruptedException {
+        waitUntilElementIsLoaded(addUserButton);
+    }
+
+    public boolean isOnRegistrationPage() throws IOException, InterruptedException {
+        return exists(addUserButton);
     }
 }
