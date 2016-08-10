@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by rut on 09.08.2016.
  */
-public class DoctorsRutPage extends Page {
+public class DoctorRutPage extends Page {
 
     @FindBy(id = "Top1_HeadLoginStatus")
     WebElement exitStatusButton;
@@ -20,7 +20,7 @@ public class DoctorsRutPage extends Page {
     @FindBy(id = "MainContent_AddNewItem")
     WebElement addPatientButton;
 
-    public DoctorsRutPage(WebDriver driver) {
+    public DoctorRutPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }

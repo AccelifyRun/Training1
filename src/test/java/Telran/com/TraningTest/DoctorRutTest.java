@@ -1,6 +1,6 @@
 package Telran.com.TraningTest;
 
-import Telran.com.Training.DoctorsRutPage;
+import Telran.com.Training.DoctorRutPage;
 import Telran.com.Training.LoginRutPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,17 +15,17 @@ import java.io.IOException;
 /**
  * Created by rutga on 09.08.2016.
  */
-public class DoctorsRutTest {
+public class DoctorRutTest {
     //    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     public LoginRutPage loginRutPage;
-    public DoctorsRutPage doctorsRutPage;
+    public DoctorRutPage doctorRutPage;
     public WebDriver driver;
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
         driver = new ChromeDriver();
         loginRutPage = PageFactory.initElements(driver, LoginRutPage.class);
-        doctorsRutPage = PageFactory.initElements(driver, DoctorsRutPage.class);
+        doctorRutPage = PageFactory.initElements(driver, DoctorRutPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -33,12 +33,12 @@ public class DoctorsRutTest {
         loginRutPage.openLoginPage();
         loginRutPage.waitUntilLoginPageIsLoded();
         loginRutPage.loginDoctor();
-        doctorsRutPage.waitUntilDoctorsPageIsLoaded();
+        doctorRutPage.waitUntilDoctorsPageIsLoaded();
     }
 
     @Test
     public void addPatient() {
-        doctorsRutPage.clickToAddPatient();
+        doctorRutPage.clickToAddPatient();
     }
 
     @AfterClass(alwaysRun = true)
