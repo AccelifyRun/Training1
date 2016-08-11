@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+//import org.openqa.selenium.ie.InternetExplorerDriver;
+
 //@org.testng.annotations.Listeners(FailTestScreenshotListener.class)
 public class LoginTests extends TestNgTestBase {
     // private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
@@ -21,7 +23,7 @@ public class LoginTests extends TestNgTestBase {
     public void setup() {
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginAlicePage = PageFactory.initElements(driver, LoginAlicePage.class);
-//        driver = new InternetExplorerDriver();
+        //driver = new InternetExplorerDriver();
     }
 
     @BeforeMethod(alwaysRun = true)
