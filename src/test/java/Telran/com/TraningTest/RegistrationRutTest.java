@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -39,8 +40,9 @@ public class RegistrationRutTest {
     }
 
     @Test
-    public void testLoginWithExtData() throws IOException, InterruptedException {
-//        Log.info("TestLoginWithExtData was started...");
+    public void registrationPositive() throws InterruptedException, IOException {
+        Log.info("Test registrationPositive was started...");
+
         registrationRutPage.fillUsernameField("0055Doctor");
         registrationRutPage.fillFirstNameField("name");
         registrationRutPage.fillLastNameField("lastname");
@@ -57,10 +59,10 @@ public class RegistrationRutTest {
         registrationRutPage.fillCityField("Jerusalem");
         registrationRutPage.clickOnAddUserButton();
 
-//        assertFalse("We are not on the Registration page", registrationRutPage.isOnRegistrationPage());
-
-//         Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
-//         Log.info("TestLoginWithExtData stoped...");
+        Thread.sleep(5000);
+        Assert.assertTrue(registrationRutPage.isOnRegistrationPage(), "We are not on the Registration page");
+        Log.info("Assert is passed");
+        Log.info("Test registrationPositive stoped...");
     }
 
     @AfterClass(alwaysRun = true)

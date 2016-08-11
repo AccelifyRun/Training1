@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 /**
- * Created by rutga on 09.08.2016.
+ * Created by rutg on 09.08.2016.
  */
 public class DoctorRutTest {
     //    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
@@ -39,6 +39,7 @@ public class DoctorRutTest {
     @Test
     public void addPatient() {
         doctorRutPage.clickToAddPatient();
+//        Assert.assertTrue();
     }
 
     @AfterClass(alwaysRun = true)

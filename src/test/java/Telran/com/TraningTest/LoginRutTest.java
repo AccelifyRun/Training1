@@ -38,6 +38,11 @@ public class LoginRutTest {
         loginRutPage.clickToForgotPassword();
     }
 
+    @Test
+    public void loginTest() {
+
+    }
+
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         this.driver.quit();

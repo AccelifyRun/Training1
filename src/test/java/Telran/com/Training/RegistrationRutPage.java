@@ -4,6 +4,7 @@ import Telran.com.pages.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 
@@ -33,7 +34,7 @@ public class RegistrationRutPage extends Page {
     WebElement mobilePhoneField;
     @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactPhoneTxt")
     WebElement phoneField;
-    @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactPhoneTxt")
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_AddressTxt")
     WebElement streetField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_HouseNumberTxt")
     WebElement houseField;
@@ -95,12 +96,16 @@ public class RegistrationRutPage extends Page {
     //errors
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator2")
     WebElement usernameError;   //15, not simbols, only letters and numbers
+    @FindBy(xpath = "//*[@id='MainContent_RegisterUser_CreateUserStepContainer_RegisterUserValidationSummary']/ul/li")
+    WebElement usernameExistsError; //The user name already exist
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator1")
     WebElement firstNameError;  //15, only letters
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator3")
     WebElement lastNameError;   //15, only letters
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_regexEmailValid")
     WebElement mailError;       //not valid
+    @FindBy(xpath = "MainContent_RegisterUser_CreateUserStepContainer_CustomValidator2")
+    WebElement emailExsistsError;   //מייל קיים במערכת
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CustomValidator3")
     WebElement passwordError;   // 15, סיסמא לא יכולה להכיל את שם המשתמש.
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PasswordCompare")
@@ -118,77 +123,113 @@ public class RegistrationRutPage extends Page {
 
     public RegistrationRutPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
-    public void CreateUserRutPage() {
+
+    public void openRegistrationPage() {
         driver.get("http://dhclinicappv2stg.item-soft.co.il/SitePages/createUser.aspx?ReturnUrl=HomePage");
     }
 
     //filling the fields
-    public void fillUsernameField(String username) {
+    public RegistrationRutPage fillUsernameField(String username) {
         setElementText(usernameField, username);
+        return this;
     }
-    public void fillFirstNameField(String firstName) {
+
+    public RegistrationRutPage fillFirstNameField(String firstName) {
         setElementText(firstNameField, firstName);
+        return this;
     }
-    public void fillLastNameField(String lastName) {
+
+    public RegistrationRutPage fillLastNameField(String lastName) {
         setElementText(lastNameField, lastName);
+        return this;
     }
-    public void fillMailField(String mail) {
+
+    public RegistrationRutPage fillMailField(String mail) {
         setElementText(mailField, mail);
+        return this;
     }
-    public void fillPasswordField(String password) {
+
+    public RegistrationRutPage fillPasswordField(String password) {
         setElementText(passwordField, password);
+        return this;
     }
-    public void fillConfirmPasswordField(String password) {
+
+    public RegistrationRutPage fillConfirmPasswordField(String password) {
         setElementText(confirmPasswordField, password);
+        return this;
+
     }
-    public void filllDField(String id) {
+
+    public RegistrationRutPage filllDField(String id) {
         setElementText(idField, id);
+        return this;
     }
 
     // TODO: 01.08.2016
-    public void fillBirthdayField(String birthday) {
+    public RegistrationRutPage fillBirthdayField(String birthday) {
         setElementText(birthdayField, birthday);
+        return this;
     }
-    public void fillMobilePhoneField(String mobilePhone) {
+
+    public RegistrationRutPage fillMobilePhoneField(String mobilePhone) {
         setElementText(mobilePhoneField, mobilePhone);
+        return this;
     }
-    public void fillPhoneField(String phone) {
+
+    public RegistrationRutPage fillPhoneField(String phone) {
         setElementText(phoneField, phone);
+        return this;
     }
-    public void fillStreetField(String street) {
+
+    public RegistrationRutPage fillStreetField(String street) {
         setElementText(streetField, street);
+        return this;
     }
-    public void fillHouseField(String house) {
+
+    public RegistrationRutPage fillHouseField(String house) {
         setElementText(houseField, house);
+        return this;
     }
-    public void fillCityField(String city) {
+
+    public RegistrationRutPage fillCityField(String city) {
         setElementText(cityField, city);
+        return this;
     }
-    public void fillCountryField(String country) {
+
+    public RegistrationRutPage fillCountryField(String country) {
         setElementText(countryField, country);
+        return this;
     }
-    public void fillClinicNameField(String clinicName) {
+
+    public RegistrationRutPage fillClinicNameField(String clinicName) {
         setElementText(clinicNameField, clinicName);
+        return this;
     }
 
     //clicking on dropdowns
-    public void clickOnOrganizationDropdown(String value) {
+    public RegistrationRutPage clickOnOrganizationDropdown(String value) {
         clickElement(organizationDropdown);
         selectValueInDropdown(organizationDropdown, value);
+        return this;
     }
 
     //clicking on the buttons
-    public void clickOnAddUserButton() {
+    public RegistrationRutPage clickOnAddUserButton() {
         clickElement(addUserButton);
+        return this;
     }
-    public void clickOnCancellationButton() {
+
+    public RegistrationRutPage clickOnCancellationButton() {
         clickElement(cancellationButton);
+        return this;
     }
 
     //waitings
-    public void waitUntilRegPageIsLoaded() throws IOException, InterruptedException {
+    public RegistrationRutPage waitUntilRegPageIsLoaded() throws IOException, InterruptedException {
         waitUntilElementIsLoaded(addUserButton);
+        return this;
     }
 
     public boolean isOnRegistrationPage() throws IOException, InterruptedException {

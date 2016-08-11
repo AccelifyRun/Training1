@@ -14,9 +14,11 @@ import java.io.IOException;
  * Created by rut on 01.08.2016.
  */
 public class LoginRutPage extends Page {
+
     public static String username = "5555Doctor";
     public static String password = "LinkCare!!11";
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
+
     //fields
     @FindBy(id = "MainContent_LoginUser_UserName")
     WebElement usernameField;
@@ -70,24 +72,30 @@ public class LoginRutPage extends Page {
         Log.info("Clicking to addNewUserButton");
         clickElement(addNewUserButton);
     }
-    public void clickToForgotPassword() {
+
+    public LoginRutPage clickToForgotPassword() {
         clickElement(forgotPasswordButton);
+        return this;
     }
-    public void clickToContinue() {
+
+    public LoginRutPage clickToContinue() {
         clickElement(continueButton);
+        return this;
     }
 
-    public void isOnLoginPage() throws IOException, InterruptedException {
-        waitUntilElementIsLoaded(loginStatusButton);
+    public boolean isOnLoginPage() {
+        return exists(loginStatusButton);
     }
 
-    public void waitUntilLoginPageIsLoded() throws IOException, InterruptedException {
+    public LoginRutPage waitUntilLoginPageIsLoded() throws IOException, InterruptedException {
         waitUntilElementIsLoaded(continueButton);
+        return this;
     }
 
-    public void loginDoctor() {
+    public LoginRutPage loginDoctor() {
         fillUsernameField(username);
         fillPasswordField(password);
         clickToContinue();
+        return this;
     }
 }
