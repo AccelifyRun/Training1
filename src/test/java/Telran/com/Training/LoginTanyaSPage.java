@@ -15,8 +15,8 @@ public class LoginTanyaSPage extends Page {
 
     @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
     WebElement registerHyperLink;
-    @FindBy(id = "MainContent_LoginUser_UserName")
-    WebElement usernameField;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
+    WebElement fillUsernameField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
     WebElement firstNameTxt;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_lastNameTxt")
@@ -63,80 +63,103 @@ public class LoginTanyaSPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public void fillUsernameField(String username) {
+    public LoginTanyaSPage fillUsernameField(String username) {
 
-        setElementText(usernameField, username);
+        setElementText(fillUsernameField, username);
+
+        return this;
     }
 
-    public void fillFirstNameField(String firstName) {
+
+    public LoginTanyaSPage fillFirstNameField(String firstName) {
         setElementText(firstNameTxt, firstName);
+        return this;
     }
 
-    public void fillLastNameField(String lastname) {
+    public LoginTanyaSPage fillLastNameField(String lastname) {
         setElementText(lastNameTxt, lastname);
+        return this;
     }
 
-    public void fillEmailField(String email) {
+    public LoginTanyaSPage fillEmailField(String email) {
         setElementText(Email, email);
+
+        return this;
     }
 
-    public void fillPassword(String password) {
+    public LoginTanyaSPage fillPassword(String password) {
         setElementText(Password, password);
+        return this;
     }
 
-    public void fillConfirmPassword(String conPassword) {
+    public LoginTanyaSPage fillConfirmPassword(String conPassword) {
         setElementText(ConfirmPassword, conPassword);
+        return this;
     }
 
-    public void fillPersonalId(String perID) {
+    public LoginTanyaSPage fillPersonalId(String perID) {
         setElementText(PersonalIdTxt, perID);
+        return this;
     }
 
 
-    public void fillBirthday(String birthday) {
+    public LoginTanyaSPage fillBirthday(String birthday) {
         setElementText(dateInput, birthday);
+        return this;
     }
 
-    public void fillContactCellTxt(String mobPhone) {
+    public LoginTanyaSPage fillContactCellTxt(String mobPhone) {
         setElementText(ContactCellTxt, mobPhone);
+        return this;
     }
 
-    public void fillContactPhoneTxt(String housePhone) {
+    public LoginTanyaSPage fillContactPhoneTxt(String housePhone) {
         setElementText(ContactPhoneTxt, housePhone);
+        return this;
     }
 
-    public void fillAddressTxt(String address) {
+    public LoginTanyaSPage fillAddressTxt(String address) {
         setElementText(AddressTxt, address);
+        return this;
     }
 
-    public void fillHouseNumberTxt(String houseNum) {
+    public LoginTanyaSPage fillHouseNumberTxt(String houseNum) {
         setElementText(HouseNumberTxt, houseNum);
+        return this;
     }
 
-    public void fillCityTxt(String city) {
+    public LoginTanyaSPage fillCityTxt(String city) {
         setElementText(CityTxt, city);
+        return this;
     }
 
-    public void fillCountryTxt(String country) {
+    public LoginTanyaSPage fillCountryTxt(String country) {
         setElementText(CountryTxt, country);
+        return this;
     }
 
-    public void fillClinicaName(String clinicName) {
+    public LoginTanyaSPage fillClinicaName(String clinicName) {
         setElementText(clinicNameTxt, clinicName);
+        return this;
     }
 
 
-    public void clickRegisterHyperLink() {
+    public LoginTanyaSPage clickRegisterHyperLink() {
         clickElement(registerHyperLink);
+        return this;
     }
 
-    public void clickRolesDD1() {
+    public LoginTanyaSPage clickRolesDD1() {
         clickElement(rolesDD1);
         selectValueInDropdown(rolesDD1, "1");
+
+        return this;
     }
 
-    public void clickFieldClinicAdmin() {
+    public LoginTanyaSPage clickFieldClinicAdmin() {
         clickElement(IsClinicAdmin);
+
+        return this;
     }
 
 
@@ -175,6 +198,18 @@ public class LoginTanyaSPage extends Page {
     public LoginTanyaSPage waitUntilLoginPageIsLoaded2() {
         try {
             waitUntilElementIsLoaded(AddNewUser);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
+    public LoginTanyaSPage waitUntilLoginPageIsLoaded3() {
+        try {
+            waitUntilElementIsLoaded(fillUsernameField);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
