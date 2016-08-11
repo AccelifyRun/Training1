@@ -35,22 +35,32 @@ public class RegistrationRutTest {
     public void beforeMethodSetUp() throws IOException, InterruptedException {
         loginRutPage.openLoginPage();
         loginRutPage.clickToAddNewUser();
-        registrationRutPage.isOnRegistrationPage();
+        registrationRutPage.waitUntilRegPageIsLoaded();
     }
 
     @Test
     public void testLoginWithExtData() throws IOException, InterruptedException {
-        Log.info("TestLoginWithExtData was started....");
-        registrationRutPage.fillUsernameField("555Doctor");
+//        Log.info("TestLoginWithExtData was started...");
+        registrationRutPage.fillUsernameField("0055Doctor");
         registrationRutPage.fillFirstNameField("name");
         registrationRutPage.fillLastNameField("lastname");
-        registrationRutPage.fillMailField("555Doctor@yopmail.com");
+        registrationRutPage.fillMailField("0055Doctor@yopmail.com");
         registrationRutPage.fillPasswordField("LinkCare!!11");
         registrationRutPage.fillConfirmPasswordField("LinkCare!!11");
-        registrationRutPage.filllDField("687753996");
+        registrationRutPage.filllDField("423282763");
+        registrationRutPage.fillClinicNameField("BestClinic");
         registrationRutPage.fillBirthdayField("11122012");
+        registrationRutPage.fillMobilePhoneField("1111111111");
+        registrationRutPage.fillPhoneField("222222222");
+        registrationRutPage.fillStreetField("Morgentau");
+        registrationRutPage.fillHouseField("5");
+        registrationRutPage.fillCityField("Jerusalem");
+        registrationRutPage.clickOnAddUserButton();
+
+//        assertFalse("We are not on the Registration page", registrationRutPage.isOnRegistrationPage());
+
 //         Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
-         Log.info("TestLoginWithExtData stoped....");
+//         Log.info("TestLoginWithExtData stoped...");
     }
 
     @AfterClass(alwaysRun = true)
