@@ -124,7 +124,8 @@ public class RegisrtationAfoninaPage extends Page {
         setElementText(IsClinicAdmin, isClinicAdmin);
     }
 
-    public void fillclinicName(String clinicNameTxt) {
+    public void fillclinicName(String clinicNameTxt) throws InterruptedException {
+        scrolltoelement(clinicName);
         setElementText(clinicName, clinicNameTxt);
     }
 

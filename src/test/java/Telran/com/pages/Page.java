@@ -81,6 +81,11 @@ public abstract class Page {
     }
   }
 
+  public void scrolltoelement(WebElement element) throws InterruptedException {
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    Thread.sleep(500);
+  }
+
   public void waitUntilIsLoaded(WebElement element) {
     try {
       new WebDriverWait(driver, 7).until(ExpectedConditions.visibilityOf(element));

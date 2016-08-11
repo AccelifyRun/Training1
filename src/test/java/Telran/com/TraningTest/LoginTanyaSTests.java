@@ -23,9 +23,11 @@ public class LoginTanyaSTests {
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
+        driver = new ChromeDriver();
+
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginTanyaSPage = PageFactory.initElements(driver, LoginTanyaSPage.class);
-        driver = new ChromeDriver();
+
     }
 
     @BeforeMethod(alwaysRun = true)
