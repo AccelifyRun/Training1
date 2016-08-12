@@ -84,7 +84,7 @@ public class LoginRutPage extends Page {
     }
 
     public boolean isOnLoginPage() {
-        return exists(loginStatusButton);
+        return exists(continueButton);
     }
 
     public LoginRutPage waitUntilLoginPageIsLoded() throws IOException, InterruptedException {

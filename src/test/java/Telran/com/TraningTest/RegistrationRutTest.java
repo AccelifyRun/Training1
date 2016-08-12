@@ -1,6 +1,7 @@
 package Telran.com.TraningTest;
 
 import Telran.com.LogLog4j;
+import Telran.com.Training.DoctorRutPage;
 import Telran.com.Training.LoginRutPage;
 import Telran.com.Training.RegistrationRutPage;
 import org.apache.log4j.Logger;
@@ -23,6 +24,7 @@ public class RegistrationRutTest {
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     public LoginRutPage loginRutPage;
     public RegistrationRutPage registrationRutPage;
+    public DoctorRutPage doctorRutPage;
     public WebDriver driver;
 
     @BeforeClass(alwaysRun = true)
@@ -30,11 +32,13 @@ public class RegistrationRutTest {
         driver = new ChromeDriver();
         loginRutPage = PageFactory.initElements(driver, LoginRutPage.class);
         registrationRutPage = PageFactory.initElements(driver, RegistrationRutPage.class);
+        doctorRutPage = PageFactory.initElements(driver, DoctorRutPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() throws IOException, InterruptedException {
         loginRutPage.openLoginPage();
+        loginRutPage.isOnLoginPage();
         loginRutPage.clickToAddNewUser();
         registrationRutPage.waitUntilRegPageIsLoaded();
     }
@@ -43,24 +47,26 @@ public class RegistrationRutTest {
     public void registrationPositive() throws InterruptedException, IOException {
         Log.info("Test registrationPositive was started...");
 
-        registrationRutPage.fillUsernameField("0055Doctor");
-        registrationRutPage.fillFirstNameField("name");
-        registrationRutPage.fillLastNameField("lastname");
-        registrationRutPage.fillMailField("0055Doctor@yopmail.com");
-        registrationRutPage.fillPasswordField("LinkCare!!11");
-        registrationRutPage.fillConfirmPasswordField("LinkCare!!11");
-        registrationRutPage.filllDField("423282763");
-        registrationRutPage.fillClinicNameField("BestClinic");
-        registrationRutPage.fillBirthdayField("11122012");
-        registrationRutPage.fillMobilePhoneField("1111111111");
-        registrationRutPage.fillPhoneField("222222222");
-        registrationRutPage.fillStreetField("Morgentau");
-        registrationRutPage.fillHouseField("5");
-        registrationRutPage.fillCityField("Jerusalem");
-        registrationRutPage.clickOnAddUserButton();
+        registrationRutPage
+                .fillUsernameField("0055Doctor")
+                .fillFirstNameField("name")
+                .fillLastNameField("lastname")
+                .fillMailField("0055Doctor@yopmail.com")
+                .fillPasswordField("LinkCare!!11")
+                .fillConfirmPasswordField("LinkCare!!11")
+                .filllDField("423282763")
+                .fillClinicNameField("BestClinic")
+                .fillBirthdayField("11122012")
+                .fillMobilePhoneField("1111111111")
+                .fillPhoneField("222222222")
+                .fillStreetField("Morgentau")
+                .fillHouseField("5")
+                .fillCityField("Jerusalem")
+                .clickOnAddUserButton();
 
         Thread.sleep(5000);
-        Assert.assertTrue(registrationRutPage.isOnRegistrationPage(), "We are not on the Registration page");
+        Assert.assertTrue(doctorRutPage.isOnDoctorPage(), "Something is wrong, we are on Registration Page");
+//        Assert.assertTrue(registrationRutPage.isOnRegistrationPage(), "Something is wrong, we are on Registration Page");
         Log.info("Assert is passed");
         Log.info("Test registrationPositive stoped...");
     }

@@ -33,7 +33,7 @@ public class DoctorRutTest {
         loginRutPage.openLoginPage();
         loginRutPage.waitUntilLoginPageIsLoded();
         loginRutPage.loginDoctor();
-        doctorRutPage.waitUntilDoctorsPageIsLoaded();
+        doctorRutPage.waitUntilDoctorPageIsLoaded();
     }
 
     @Test

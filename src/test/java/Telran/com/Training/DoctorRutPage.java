@@ -29,11 +29,11 @@ public class DoctorRutPage extends Page {
         driver.get("http://dhclinicappv2stg.item-soft.co.il/SecurityInfrastructure/Accounts.aspx");
     }
 
-    public void isOnDoctorsPage() throws IOException, InterruptedException {
-        waitUntilElementIsLoaded(exitStatusButton);
+    public boolean isOnDoctorPage() {
+        return exists(addPatientButton);
     }
 
-    public void waitUntilDoctorsPageIsLoaded() throws IOException, InterruptedException {
+    public void waitUntilDoctorPageIsLoaded() throws IOException, InterruptedException {
         waitUntilElementIsLoaded(toPatientPageLink);
     }
 
