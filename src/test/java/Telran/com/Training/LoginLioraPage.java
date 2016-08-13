@@ -1,11 +1,13 @@
 package Telran.com.Training;
 
-import Telran.com.pages.RegistrationPage;
+import Telran.com.TraningTest.LogLog4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import Telran.com.pages.Page;
+import java.util.logging.Logger;
+
 
 import java.io.IOException;
 
@@ -14,14 +16,17 @@ import java.io.IOException;
  */
 public class LoginLioraPage extends Page{
 
+    public RegistrationLioraPage registrationLioraPage;
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName()) ;
     @FindBy(id = "MainContent_LoginUser_UserName")
-    WebElement usernameField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
-    WebElement firstName;
+    WebElement userNameField;
+    @FindBy(id="MainContent_LoginUser_Password")
+    WebElement userPasswordField;
+    @FindBy(id="MainContent_LoginUser_LoginButton")
+    WebElement loginBtn;
     @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
-    WebElement AddNewUser;
-    @FindBy (id="MainContent_AddNewUser")
-    WebElement saveDoctorBtn;
+    WebElement addNewUserLink;
+
 
     public LoginLioraPage(WebDriver driver) {
         super(driver);
@@ -29,29 +34,54 @@ public class LoginLioraPage extends Page{
     }
 
 
-    public void fillusernameField(String username) {
+    public LoginLioraPage fillUserNameField(String userName) {
 
-        setElementText(usernameField, username);
+        setElementText(userNameField, userName);
+        Log.info("Value for 'userName' specified");
+        return this;
+    }
 
+    public LoginLioraPage fillUserPasswordField(String userPassword) {
+
+        setElementText(userPasswordField, userPassword);
+        Log.info("Value for 'userPassword' specified");
+        return this;
     }
 
 
-    public void clickToAddNewUser() {
-        clickElement(AddNewUser);
+
+    public LoginLioraPage clickLoginButton() {
+
+        clickElement(loginBtn);
+        Log.info("Clicked 'loginBtn'");
+        return this;
     }
 
-    public void openLoginPage() {
-        driver.get("http://dhclinicappv2stg.item-soft.co.il/SitePages/createUser.aspx?ReturnUrl=HomePage");
+
+    public LoginLioraPage clickToAddNewUser() {
+        clickElement(addNewUserLink);
+        Log.info("Clicked 'addNewUserLink'");
+        return this;
     }
+
+    public LoginLioraPage openLoginPage() {
+        //driver.get("http://dhclinicappv2stg.item-soft.co.il/SitePages/createUser.aspx?ReturnUrl=HomePage");
+        driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
+        Log.info("Opened 'Login Page'");
+        return this;
+    }
+
 
     public LoginLioraPage waitUntilRegPageIsLoaded() {
+        registrationLioraPage = PageFactory.initElements(driver, RegistrationLioraPage.class);
         try {
-            waitUntilElementIsLoaded(saveDoctorBtn);
+            waitUntilElementIsLoaded(registrationLioraPage.saveDoctorBtn);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Log.info("Registration page loaded successfully");
         return this;
     }
 }

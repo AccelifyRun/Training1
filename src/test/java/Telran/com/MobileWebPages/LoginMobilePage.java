@@ -1,7 +1,7 @@
 package Telran.com.MobileWebPages;
 
 
-import Telran.com.LogLog4j;
+import Telran.com.TraningTest.LogLog4j;
 import Telran.com.pages.Page;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;

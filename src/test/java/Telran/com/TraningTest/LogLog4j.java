@@ -1,4 +1,4 @@
-package Telran.com;
+package Telran.com.TraningTest;
 
 import java.util.logging.Logger;
 
