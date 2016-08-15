@@ -1,16 +1,21 @@
 package Telran.com.Training;
 
+import Telran.com.TraningTest.LogLog4j;
 import Telran.com.pages.Page;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 /**
  * Created by Natalia on 7/24/2016.
  */
 public class LoginAfoninaPage extends Page {
+
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     @FindBy(id = "MainContent_LoginUser_UserName")
     WebElement usernameField;
     @FindBy(id = "MainContent_LoginUser_Password")
@@ -34,61 +39,89 @@ public class LoginAfoninaPage extends Page {
         super(driver);
     }
 
-    public void clickLoginButton() {
+    public LoginAfoninaPage clickLoginButton() {
         clickElement(loginButton);
+        Log.info("Click Login button");
+        return this;
     }
 
-    public void clickUserName() {
+    public LoginAfoninaPage clickUserName() {
         clickElement(usernameField);
+        Log.info("Click use name");
+        return this;
     }
 
 
-    public void clickPassord() {
+    public LoginAfoninaPage clickPassord() {
         clickElement(password);
+        Log.info("Click password");
+        return this;
     }
 
-    public void clickcreateUser() {
+    public LoginAfoninaPage clickcreateUser() {
         clickElement(createUser);
+        Log.info("Click create user");
+        return this;
     }
 
-    public void clickforgotYourPassword() {
+    public LoginAfoninaPage clickforgotYourPassword() {
         clickElement(forgotYourPassword);
+        Log.info("Click 'Forgot your password?'");
+        return this;
     }
 
-    public void clickconfirmUsingCheckBox() {
+    public LoginAfoninaPage clickconfirmUsingCheckBox() {
         clickElement(confirmUsingCheckBox);
+        Log.info("Click check box");
+        return this;
     }
 
-    public void clickconfirmUsing() {
+    public LoginAfoninaPage clickconfirmUsing() {
         clickElement(confirmUsing);
+        Log.info("Click confirm using");
+        return this;
     }
 
-    public void clickOTP() {
+    public LoginAfoninaPage clickOTP() {
         clickElement(OTP);
+        Log.info("Click OTP");
+        return this;
     }
 
-    public void fillUserNameField(String username) {
+    public LoginAfoninaPage fillUserNameField(String username) {
         setElementText(usernameField, username);
+        Log.info("Fill user name");
+        return this;
     }
 
-    public void fillPassword(String Password) {
+    public LoginAfoninaPage fillPassword(String Password) {
         setElementText(password, Password);
+        Log.info("Fill password");
+        return this;
     }
 
-    public void openLoginPage() {
+    public LoginAfoninaPage openLoginPage() {
         driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
+        Log.info("Open Login page");
+        return this;
     }
 
-    public void waitUntilLoginButtonIsLoaded() {
+    public LoginAfoninaPage waitUntilLoginButtonIsLoaded() {
         try {
             new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(loginButton));
         } catch (Exception e) {
-            // Log.info("---------------------------------");
-            // Log.info("element " + element + " can not be found by ExpectedConditions.visibilityOf(element)");
-            //  Log.info("---------------------------------");
+            Log.info("---------------------------------");
+            Log.info("element " + loginButton + " can not be found by ExpectedConditions.visibilityOf(element)");
+            Log.info("---------------------------------");
             e.printStackTrace();
         }
+        return this;
     }
 
+    public boolean isOnLoginPage() {
+        Log.info("isOnLoginPage");
+        return exists(loginButton);
+
+    }
 
 }

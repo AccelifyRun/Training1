@@ -1,20 +1,27 @@
 package Telran.com.TraningTest;
 
+import Telran.com.Training.DoctorAfoninaPage;
 import Telran.com.Training.LoginAfoninaPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+//import org.testng.log4testng.Logger;
+
 //@org.testng.annotations.Listeners(FailTestScreenshotListener.class)
 public class LoginAfoninaTests {
-    // private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-    public static String username = "3339Doctor";
+
+    public static String username = "5555Doctor";
     public static String password = "LinkCare!!11";
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     public LoginAfoninaPage loginAfoninaPage;
+    public DoctorAfoninaPage doctorAfoninaPage;
     public WebDriver driver;
 
     @BeforeClass(alwaysRun = true)
@@ -30,22 +37,38 @@ public class LoginAfoninaTests {
     }
 
     @Test
-    public void testLoginWithExtData() {
+    public void testLoginWithExtData() throws InterruptedException {
 
         // Log.info("TestLoginWithExtData was started....");
-        loginAfoninaPage.waitUntilLoginButtonIsLoaded();
-        loginAfoninaPage.clickUserName();
-        loginAfoninaPage.fillUserNameField(username);
-        loginAfoninaPage.clickPassord();
-        loginAfoninaPage.fillPassword(password);
-        loginAfoninaPage.clickconfirmUsingCheckBox();
-        loginAfoninaPage.clickLoginButton();
+        loginAfoninaPage.waitUntilLoginButtonIsLoaded()
+                .fillUserNameField(username)
+                .fillPassword(password)
+                .clickconfirmUsingCheckBox()
+                .clickLoginButton();
+        Thread.sleep(5000);
+        Assert.assertTrue(loginAfoninaPage.isOnLoginPage(), "Something is wrong");
 
         // Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
         // Log.info("TestLoginWithExtData stoped....");
     }
 
 
+    @Test
+    public void testNegativeLoginWithExtData() throws InterruptedException {
+
+        // Log.info("TestLoginWithExtData was started....");
+        loginAfoninaPage.waitUntilLoginButtonIsLoaded()
+                .fillUserNameField(username)
+                .fillPassword(password)
+                .clickconfirmUsingCheckBox()
+                .clickLoginButton();
+        doctorAfoninaPage.waitUntilExitIsLoaded();
+        Assert.assertTrue(doctorAfoninaPage.isOnDoctorPage(), "We are not is on the doctor's page");
+
+
+        // Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
+        // Log.info("TestLoginWithExtData stoped....");
+    }
     // test of clicking on Registration link are written in another class
 
     @AfterClass(alwaysRun = true)

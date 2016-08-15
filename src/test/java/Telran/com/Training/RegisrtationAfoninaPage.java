@@ -1,21 +1,27 @@
 package Telran.com.Training;
 
+import Telran.com.TraningTest.LogLog4j;
 import Telran.com.pages.Page;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+
+//import org.testng.log4testng.Logger;
 
 /**
  * Created by Natalia on 7/24/2016.
  */
 public class RegisrtationAfoninaPage extends Page {
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
+
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
     WebElement userName;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
@@ -78,261 +84,387 @@ public class RegisrtationAfoninaPage extends Page {
     @FindBy(id = "Top1_HeadLoginView_DisplayName")
     WebElement AddedUser;
 
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserNameRequired")
+    WebElement userNameRequired;
+    @FindBy(id = " MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator2")
+    WebElement userNameValidstor2;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_FirsNameRequired")
+    WebElement firstNameRequired;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator1")
+    WebElement firstNameValidator1;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_LastNameRequired")
+    WebElement lastNameRequaired;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator3")
+    WebElement lastNameValidator3;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_EmailRequired")
+    WebElement EmaiRequired;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_regexEmailValid")
+    WebElement EmaiValid;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CustomValidator2")
+    WebElement EmaiValidator2;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired")
+    WebElement PasswordRequired;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CustomValidator3")
+    WebElement PasswordValidator3;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired")
+    WebElement ConfirmPassordRequired;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PasswordCompare")
+    WebElement ConfirmPassordCompare;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator1")
+    WebElement PersonalIdValidator1;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CVPersonalId")
+    WebElement PersonalIdCV;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator2")
+    WebElement ContactCellRequiredFieldValidator2;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator3")
+    WebElement AddressRequired;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator4")
+    WebElement AddressValidator4;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator5")
+    WebElement HouseNumbeRequired;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator5")
+    WebElement HouseNumbeValidator5;
+
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator4")
+    WebElement CityRequired;
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator6")
+    WebElement CityValidator6;
+
+
     public RegisrtationAfoninaPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
         PageFactory.initElements(driver, this);
     }
 
-    public void clickEmail() {
+    public RegisrtationAfoninaPage clickEmail() {
         clickElement(Email);
+        Log.info("Click Email");
+        return this;
     }
 
-    public void fillEmail(String email) {
+    public RegisrtationAfoninaPage fillEmail(String email) {
         setElementText(Email, email);
+        Log.info("Fill Email");
+        return this;
     }
 
-    public void fillUserNameField(String username) {
+    public RegisrtationAfoninaPage fillUserNameField(String username) {
         setElementText(userName, username);
+        Log.info("Fill UserNameField");
+        return this;
     }
 
-    public void fillFirstName(String firstNameTxt) {
+    public RegisrtationAfoninaPage fillFirstName(String firstNameTxt) {
         setElementText(firstName, firstNameTxt);
+        Log.info("Fill FirstName");
+        return this;
     }
 
-    public void fillLastName(String lastNameTxt) {
+    public RegisrtationAfoninaPage fillLastName(String lastNameTxt) {
         setElementText(lastName, lastNameTxt);
+        Log.info("Fill LasttName");
+        return this;
     }
 
-    public void fillPassword(String password) {
+    public RegisrtationAfoninaPage fillPassword(String password) {
         setElementText(Password, password);
+        Log.info("Fill Password");
+        return this;
     }
 
-    public void fillConfirmPassord(String confirmPassord) {
+    public RegisrtationAfoninaPage fillConfirmPassord(String confirmPassord) {
         setElementText(ConfirmPassord, confirmPassord);
+        Log.info("Fill ConfirmPassord");
+        return this;
     }
 
-    public void fillPersonalId(String PersonalIdTxt) {
+    public RegisrtationAfoninaPage fillPersonalId(String PersonalIdTxt) {
         setElementText(PersonalId, PersonalIdTxt);
+        Log.info("Fill PersonalId");
+        return this;
     }
 
-    public void fillrolesDDI(String RolesDDI) {
+    public RegisrtationAfoninaPage fillrolesDDI(String RolesDDI) {
         setElementText(rolesDDI, RolesDDI);
+        Log.info("Fill rolesDDI");
+        return this;
     }
 
-    public void fillIsClinicAdmin(String isClinicAdmin) {
+    public RegisrtationAfoninaPage fillIsClinicAdmin(String isClinicAdmin) {
         setElementText(IsClinicAdmin, isClinicAdmin);
+        Log.info("Fill IsClinicAdmin");
+        return this;
     }
 
-    public void fillclinicName(String clinicNameTxt) throws InterruptedException {
+    public RegisrtationAfoninaPage fillclinicName(String clinicNameTxt) throws InterruptedException {
         scrolltoelement(clinicName);
         setElementText(clinicName, clinicNameTxt);
+        Log.info("Fill clinicName");
+        return this;
     }
 
-    public void fillOrganizationDDL(String organizationDDL) {
+    public RegisrtationAfoninaPage fillOrganizationDDL(String organizationDDL) {
         setElementText(OrganizationDDL, organizationDDL);
+        Log.info("Fill OrganizationDDL");
+        return this;
     }
 
-    public void fillbirthday(String dateInput) {
+    public RegisrtationAfoninaPage fillbirthday(String dateInput) {
         setElementText(birthday, dateInput);
+        Log.info("Fill birthday");
+        return this;
     }
 
-    public void fillCalendarPopupButton(String calendarPopupButton) {
+    public RegisrtationAfoninaPage fillCalendarPopupButton(String calendarPopupButton) {
         setElementText(CalendarPopupButton, calendarPopupButton);
+        Log.info("Fill CalendarPopupButton");
+        return this;
     }
 
-    public void fillContactCell(String ContactCellTxt) {
+    public RegisrtationAfoninaPage fillContactCell(String ContactCellTxt) {
         setElementText(ContactCell, ContactCellTxt);
+        Log.info("Fill ContactCell");
+        return this;
     }
 
-    public void fillContactPhone(String ContactPhoneTxt) {
+    public RegisrtationAfoninaPage fillContactPhone(String ContactPhoneTxt) {
         setElementText(ContactPhone, ContactPhoneTxt);
+        Log.info("Fill contactPhone");
+        return this;
     }
 
-    public void fillAddress(String AddressTxt) {
+    public RegisrtationAfoninaPage fillAddress(String AddressTxt) {
         setElementText(Address, AddressTxt);
+        Log.info("Fill address");
+        return this;
     }
 
-    public void fillHouseNumber(String HouseNumberTxt) {
+    public RegisrtationAfoninaPage fillHouseNumber(String HouseNumberTxt) {
         setElementText(HouseNumber, HouseNumberTxt);
+        Log.info("Fill HouseNumber");
+        return this;
     }
 
-    public void fillCity(String CityTxt) {
+    public RegisrtationAfoninaPage fillCity(String CityTxt) {
         setElementText(City, CityTxt);
+        Log.info("Fill City");
+        return this;
     }
 
-    public void fillCountry(String CountryTxt) {
+    public RegisrtationAfoninaPage fillCountry(String CountryTxt) {
         setElementText(Country, CountryTxt);
+        Log.info("Fill country");
+        return this;
     }
 
-    public void fillLinkButton1(String linkButton1) {
+    public RegisrtationAfoninaPage fillLinkButton1(String linkButton1) {
         setElementText(LinkButton1, linkButton1);
+        Log.info("Fill linkButton1");
+        return this;
     }
 
-    public void fillAddNewUser(String newUser) {
+    public RegisrtationAfoninaPage fillAddNewUser(String newUser) {
         setElementText(AddNewUser, newUser);
+        Log.info("Fill AddNewUser");
+        return this;
     }
 
-    public void fillConfirmPassorw(String Password) {
+    public RegisrtationAfoninaPage fillConfirmPassorw(String Password) {
         setElementText(ConfirmPassord, Password);
+        Log.info("Fill ConfirmPassord");
+        return this;
     }
 
-    public void clickUserName() {
+    public RegisrtationAfoninaPage clickUserName() {
         clickElement(userName);
+        Log.info("Click userName");
+        return this;
     }
 
-    public void clickFirstName() {
+    public RegisrtationAfoninaPage clickFirstName() {
         clickElement(firstName);
+        Log.info("Click firstName");
+        return this;
     }
 
-    public void clickLastName() {
+    public RegisrtationAfoninaPage clickLastName() {
         clickElement(lastName);
+        Log.info("Click lastName");
+        return this;
     }
 
-    public void clickPassord() {
+    public RegisrtationAfoninaPage clickPassord() {
         clickElement(Password);
+        Log.info("Click Password");
+        return this;
     }
 
-    public void clickConfirmPassord() {
+    public RegisrtationAfoninaPage clickConfirmPassord() {
         clickElement(ConfirmPassord);
+        Log.info("Click ConfirmPassord");
+        return this;
     }
 
-    public void clickPersonalId() {
+    public RegisrtationAfoninaPage clickPersonalId() {
         clickElement(PersonalId);
+        Log.info("Click PersonalId");
+        return this;
     }
 
-    public void clickrolesDDI() {
+    public RegisrtationAfoninaPage clickrolesDDI() {
         clickElement(rolesDDI);
+        Log.info("Click rolesDDI");
+        return this;
     }
 
-    public void clickIsClinicAdmin() {
+    public RegisrtationAfoninaPage clickIsClinicAdmin() {
         clickElement(IsClinicAdmin);
+        Log.info("Click IsClinicAdmin");
+        return this;
     }
 
-    public void clickclinicName() {
+    public RegisrtationAfoninaPage clickclinicName() {
         clickElement(clinicName);
+        Log.info("Click clinicName");
+        return this;
     }
 
-    public void clickOrganizationDDL() {
+    public RegisrtationAfoninaPage clickOrganizationDDL() {
         clickElement(OrganizationDDL);
+        Log.info("Click OrganizationDDL");
+        return this;
     }
 
-    public void clickbirthday() {
+    public RegisrtationAfoninaPage clickbirthday() {
         clickElement(birthday);
+        Log.info("Click birthday");
+        return this;
     }
 
-    public void clickCalendarPopupButton() {
+    public RegisrtationAfoninaPage clickCalendarPopupButton() {
         clickElement(CalendarPopupButton);
+        Log.info("Click CalendarPopupButton");
+        return this;
     }
 
-    public void clickContactCell() {
+    public RegisrtationAfoninaPage clickContactCell() {
         clickElement(ContactCell);
+        Log.info("Click ContactCell");
+        return this;
     }
 
-    public void clickContactPhone() {
+    public RegisrtationAfoninaPage clickContactPhone() {
         clickElement(ContactPhone);
+        Log.info("Click ContactPhone");
+        return this;
     }
 
-    public void clickAddress() {
+    public RegisrtationAfoninaPage clickAddress() {
         clickElement(Address);
+        Log.info("Click Address");
+        return this;
     }
 
-    public void clickHouseNumber() {
+    public RegisrtationAfoninaPage clickHouseNumber() {
         clickElement(HouseNumber);
+        Log.info("Click HouseNumber");
+        return this;
     }
 
-    public void clickCity() {
+    public RegisrtationAfoninaPage clickCity() {
         clickElement(City);
+        Log.info("Click City");
+        return this;
     }
 
-    public void clickCountry() {
+    public RegisrtationAfoninaPage clickCountry() {
         clickElement(Country);
+        Log.info("click Country");
+        return this;
     }
 
-    public void clickAddNewUser() {
+    public RegisrtationAfoninaPage clickAddNewUser() {
         clickElement(AddNewUser);
+        Log.info("Click AddNewUser");
+        return this;
     }
 
-    public void clickLinkButton1() {
+    public RegisrtationAfoninaPage clickLinkButton1() {
         clickElement(LinkButton1);
+        Log.info("Click LinkButton1");
+        return this;
     }
 
-    public void clickDropdownNameField() {
-        clickElement(rolesDDI);
+    public RegisrtationAfoninaPage selectValueInOrganizationDDLText(String value) {
+        Select select = new Select(OrganizationDDL);
+        select.selectByVisibleText(value);
+        Log.info("selectValueInOrganizationDDLText");
+        return this;
+
     }
 
-    public void clickDropdownPrivateDoctor() {
-        clickElement(PrivateDoctor);
-    }
 
-
-    public void clickLetOrganization() {
-        clickElement(OrganizationNameTxt);
-        clickElement(LetOrganization);
-    }
-
-    public void clickMindyTest() {
-        clickElement(OrganizationNameTxt);
-        clickElement(MindyTest);
-    }
-
-    public void clickMCHC() {
-        clickElement(OrganizationNameTxt);
-        clickElement(MCHC);
-    }
-
-    public void openLoginRegistrationPage() {
+    public RegisrtationAfoninaPage openLoginRegistrationPage() {
         driver.get("http://dhclinicappv2stg.item-soft.co.il/SitePages/createUser.aspx?ReturnUrl=HomePage");
+        Log.info("Open LoginRegistrationPage ");
+        return this;
     }
 
-    public void waitUntilAddNewUserIsLoaded() {
+    public RegisrtationAfoninaPage waitUntilAddNewUserIsLoaded() {
         try {
             new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(AddNewUser));
         } catch (Exception e) {
-            // Log.info("---------------------------------");
-            // Log.info("element " + element + " can not be found by ExpectedConditions.visibilityOf(element)");
-            //  Log.info("---------------------------------");
+            Log.info("---------------------------------");
+            Log.info("element " + AddNewUser + " can not be found by ExpectedConditions.visibilityOf(element)");
+            Log.info("---------------------------------");
             e.printStackTrace();
         }
+        return this;
     }
 
-    public void waitUntilClinicNameIsLoaded() {
+    public RegisrtationAfoninaPage waitUntilClinicNameIsLoaded() {
         try {
             new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(clinicName));
         } catch (Exception e) {
-            // Log.info("---------------------------------");
-            // Log.info("element " + element + " can not be found by ExpectedConditions.visibilityOf(element)");
-            //  Log.info("---------------------------------");
+            Log.info("---------------------------------");
+            Log.info("element " + clinicName + " can not be found by ExpectedConditions.visibilityOf(element)");
+            Log.info("---------------------------------");
             e.printStackTrace();
         }
+        return this;
     }
 
 
-    public void waitUntilAddNewUserIsDisappeared(String id) throws IOException, InterruptedException {
+    public RegisrtationAfoninaPage waitUntilAddNewUserIsDisappeared(String id) throws IOException, InterruptedException {
         new WebDriverWait(driver, 25).until(ExpectedConditions.invisibilityOfElementLocated(By.id(id)));
+        Log.info("WaitUntilAddNewUserIsDisappeared");
+        return this;
     }
 
-    public void waitUntilAddedUserIsLoaded() {
+    public RegisrtationAfoninaPage waitUntilAddedUserIsLoaded() {
         try {
             new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(AddedUser));
         } catch (Exception e) {
-            // Log.info("---------------------------------");
-            // Log.info("element " + element + " can not be found by ExpectedConditions.visibilityOf(element)");
-            //  Log.info("---------------------------------");
+            Log.info("---------------------------------");
+            Log.info("element " + AddedUser + " can not be found by ExpectedConditions.visibilityOf(element)");
+            Log.info("---------------------------------");
             e.printStackTrace();
         }
+        return this;
     }
 
-    public boolean verifyAddedUserIsPresent() {
-        try {
-            AddedUser.getTagName();
-            return true;
-        } catch (NoSuchElementException e) {
-            //  Log.info("---------------------------------");
-            //  Log.info("element " + element + " can not be found by  element.getTagName()");
-            //   Log.info("---------------------------------");
-            return false;
-        }
+    public boolean isOnLoginPage() {
+        return exists(AddedUser);
     }
 }
 
