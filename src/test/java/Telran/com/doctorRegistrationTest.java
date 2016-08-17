@@ -4,6 +4,7 @@ package Telran.com;
 */
 
 
+import Telran.com.TraningTest.LogLog4j;
 import Telran.com.pages.LoginMainPage;
 import Telran.com.pages.Page;
 import Telran.com.pages.RegistrationPage;

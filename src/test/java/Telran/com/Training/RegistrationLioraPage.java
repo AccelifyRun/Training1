@@ -17,6 +17,7 @@ public class RegistrationLioraPage extends Page{
 
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName()) ;
     public LoginLioraPage loginLioraPage;
+    public DoctorLioraPage doctorLioraPage;
 
     //enter text fields
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
@@ -71,6 +72,31 @@ public class RegistrationLioraPage extends Page{
     WebElement roleClinicAdminDropdownOption;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL")
     WebElement organizationDropdown;
+
+    //validation elements
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_UserNameRequired")
+    WebElement noUserNameLabel; //שם משתמש חובה
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_FirsNameRequired")
+    WebElement noFirstNameLabel; //שם פרטי חובה.
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_LastNameRequired")
+    WebElement noLastNameLabel; //שם משפחה חובה
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_EmailRequired")
+    WebElement noEmailLabel; //מייל חובה.
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired")
+    WebElement noPasswordLabel; //סיסמא חובה.
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired")
+    WebElement noConfirmPasswordLabel; //אישור סיסמא חובה.
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator1")
+    WebElement noPersonalIDLabel;//מספר זהות חוב
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator2")
+    WebElement noPhoneLabel; //מס' פלאפון חובה
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator3")
+    WebElement noStreetLabel; //רחוב חובה
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator5")
+    WebElement noHouseLabel; //מס' בית חובה
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator4")
+    WebElement noCityLabel; //עיר חובה
+
 
     public RegistrationLioraPage(WebDriver driver) {
         super(driver);
@@ -185,15 +211,42 @@ public class RegistrationLioraPage extends Page{
     }
 
     public RegistrationLioraPage waitUntilDoctorPageIsLoaded() {
-        loginLioraPage = PageFactory.initElements(driver, LoginLioraPage.class);
+        doctorLioraPage = PageFactory.initElements(driver, DoctorLioraPage.class);
         try {
-            waitUntilElementIsLoaded(loginLioraPage.addNewUserLink);
+            waitUntilElementIsLoaded(doctorLioraPage.doctorNameLabel);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Log.info("Login page loaded successfully");
+        Log.info("Doctor page loaded successfully");
+        return this;
+    }
+
+    public RegistrationLioraPage verifyRequiredFieldsValidations() {
+        verifyElementIsPresent(noUserNameLabel);
+        verifyText(noUserNameLabel,"שם משתמש חובה");
+        verifyElementIsPresent(noFirstNameLabel);
+        verifyText(noFirstNameLabel,"שם פרטי חובה.");
+        verifyElementIsPresent(noLastNameLabel);
+        verifyText(noLastNameLabel,"שם משפחה חובה");
+        verifyElementIsPresent(noEmailLabel);
+        verifyText(noEmailLabel,"מייל חובה.");
+        verifyElementIsPresent(noPasswordLabel);
+        verifyText(noPasswordLabel,"סיסמא חובה.");
+        verifyElementIsPresent(noConfirmPasswordLabel);
+        verifyText(noConfirmPasswordLabel,"אישור סיסמא חובה.");
+        verifyElementIsPresent(noPersonalIDLabel);
+        verifyText(noPersonalIDLabel,"מספר זהות חובה");
+        verifyElementIsPresent(noPhoneLabel);
+        verifyText(noPhoneLabel,"מס' פלאפון חובה");
+        verifyElementIsPresent(noStreetLabel);
+        verifyText(noStreetLabel,"רחוב חובה");
+        verifyElementIsPresent(noHouseLabel);
+        verifyText(noHouseLabel,"מס' בית חובה");
+        verifyElementIsPresent(noCityLabel);
+        verifyText(noCityLabel,"עיר חובה");
+        Log.info("Validation messages for required fields verified successfully");
         return this;
     }
 

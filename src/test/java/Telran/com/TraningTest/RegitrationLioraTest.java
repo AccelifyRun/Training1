@@ -40,10 +40,10 @@ public class RegitrationLioraTest {
 
     @Test
     public void registrationPositive() throws Exception {
-        registrationLioraPage.fillUserNameField("0102Doctor")
+        registrationLioraPage.fillUserNameField("0104Doctor")
                     .fillFirstNameField("John")
                     .fillLastNameField("Snow")
-                    .fillEmailField("aaa@aaa.com")
+                    .fillEmailField("bbb@aaa.com")
                     .fillPasswordField("test12345678")
                     .fillConfirmPasswordField("test12345678")
                     .fillPersonallDField("337657852")
@@ -51,12 +51,20 @@ public class RegitrationLioraTest {
                     .fillstreetField("King George")
                     .fillhouseField("8")
                     .fillcityField("Jerusalem")
-                    .fillclinicNameField("Test clinic1")
+                    .fillclinicNameField("Test clinic3")
                     .clickOnAddUserButton()
                     .waitUntilDoctorPageIsLoaded();
 
-        //Thread.sleep(5000);
     }
+
+    @Test
+    public void registrationNegative() throws Exception {
+        registrationLioraPage.clickOnAddUserButton()
+                             .verifyRequiredFieldsValidations();
+
+    }
+
+
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
