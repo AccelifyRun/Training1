@@ -39,10 +39,10 @@ public class LoginTanyaSTests {
         driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
         // Log.info("TestLoginWithExtData was started....");
         //loginTanyaSPage.waitUntilLoginPageIsLoaded();
-        loginTanyaSPage.clickRegisterHyperLink();
-        loginTanyaSPage.fillUsernameField("Tanya");
-        loginTanyaSPage.fillFirstNameField("Tanya");
-        loginTanyaSPage.fillLastNameField("Sul");
+        loginTanyaSPage.clickRegisterHyperLink()
+                .fillUsernameField("Tanya")
+                .fillFirstNameField("Tanya")
+                .fillLastNameField("Sul");
         loginTanyaSPage.fillEmailField("tan3su@gmail.com");
         loginTanyaSPage.fillPassword("12345Tan%");
         loginTanyaSPage.fillConfirmPassword("12345Tan%");

@@ -2,19 +2,21 @@ package Telran.com;
 
 import Telran.com.Training.LoginAlicePage;
 import Telran.com.pages.LoginPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+
 //import org.openqa.selenium.ie.InternetExplorerDriver;
 
 //@org.testng.annotations.Listeners(FailTestScreenshotListener.class)
 public class LoginTests extends TestNgTestBase {
-    // private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     public static String registered_username = "3339Doctor";
     public static String registered_password = "LinkCare!!11";
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     public LoginPage loginPage;
     public LoginAlicePage loginAlicePage;
     // public WebDriver driver;
