@@ -18,7 +18,6 @@ public class LoginRutPage extends Page {
     public static String username = "5555Doctor";
     public static String password = "LinkCare!!11";
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-
     //fields
     @FindBy(id = "MainContent_LoginUser_UserName")
     WebElement usernameField;
@@ -56,43 +55,51 @@ public class LoginRutPage extends Page {
         PageFactory.initElements(driver, this);
     }
     public void openLoginPage() {
+        Log.info("Opening Login page");
         driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
     }
 
     //fill the fields
     public void fillUsernameField(String username) {
+        Log.info("Filling a Username field");
         setElementText(usernameField, username);
     }
     public void fillPasswordField(String password) {
+        Log.info("Filling a Password field");
         setElementText(passwordField, password);
     }
 
     //clicking on the buttons
     public void clickToAddNewUser() {
-        Log.info("Clicking to addNewUserButton");
+        Log.info("Clicking to addNewUser button");
         clickElement(addNewUserButton);
     }
 
     public LoginRutPage clickToForgotPassword() {
+        Log.info("Clicking to forgotPassword button");
         clickElement(forgotPasswordButton);
         return this;
     }
 
     public LoginRutPage clickToContinue() {
+        Log.info("Clicking to Continue button");
         clickElement(continueButton);
         return this;
     }
 
     public boolean isOnLoginPage() {
+        Log.info("We are on Login page");
         return exists(continueButton);
     }
 
     public LoginRutPage waitUntilLoginPageIsLoded() throws IOException, InterruptedException {
+        Log.info("Wait until Continue button is loaded");
         waitUntilElementIsLoaded(continueButton);
         return this;
     }
 
     public LoginRutPage loginDoctor() {
+        Log.info("Filling all the fields for a Login");
         fillUsernameField(username);
         fillPasswordField(password);
         clickToContinue();

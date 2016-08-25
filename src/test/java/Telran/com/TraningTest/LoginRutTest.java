@@ -1,6 +1,8 @@
 package Telran.com.TraningTest;
 
+import Telran.com.LogLog4j;
 import Telran.com.Training.LoginRutPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -14,6 +16,7 @@ import org.testng.annotations.Test;
  */
 public class LoginRutTest {
 
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     public LoginRutPage loginRutPage;
     public WebDriver driver;
 
@@ -31,10 +34,12 @@ public class LoginRutTest {
 
     @Test
     public void clickOnRegistrationNewUser() {
+        Log.info("Clicking to add new user");
         loginRutPage.clickToAddNewUser();
     }
     @Test
     public void clickOnForgotPassword() {
+        Log.info("Clicking to forgot password");
         loginRutPage.clickToForgotPassword();
     }
 

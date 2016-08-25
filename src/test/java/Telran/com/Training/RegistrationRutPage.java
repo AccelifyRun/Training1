@@ -1,6 +1,8 @@
 package Telran.com.Training;
 
+import Telran.com.LogLog4j;
 import Telran.com.pages.Page;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +14,8 @@ import java.io.IOException;
  * Created by rut on 01.08.2016.
  */
 public class RegistrationRutPage extends Page {
+
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
     //fields
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
@@ -78,6 +82,9 @@ public class RegistrationRutPage extends Page {
     WebElement emailEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired")
     WebElement passwordEmptyWarning;
+    @FindBy(xpath = "//*[@id='MainContent_RegisterUser_CreateUserStepContainer_RegisterUserValidationSummary']/ul/li")
+    WebElement passwordNotValidWarnig;
+    //קריטריונים של סיסמא: מינימום 8 תוים. כולל 2 לפחות מתוך הקבוצות הבאות: אות גדולה, אות קטנה, מספר, תו מיוחד
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired")
     WebElement confirmPasswordEmptyWarning;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator1")
@@ -127,89 +134,106 @@ public class RegistrationRutPage extends Page {
     }
 
     public void openRegistrationPage() {
+        Log.info("Opening Registration page");
         driver.get("http://dhclinicappv2stg.item-soft.co.il/SitePages/createUser.aspx?ReturnUrl=HomePage");
     }
 
     //filling the fields
     public RegistrationRutPage fillUsernameField(String username) {
+        Log.info("Filling a Username field");
         setElementText(usernameField, username);
         return this;
     }
 
     public RegistrationRutPage fillFirstNameField(String firstName) {
+        Log.info("Filling a First name field");
         setElementText(firstNameField, firstName);
         return this;
     }
 
     public RegistrationRutPage fillLastNameField(String lastName) {
+        Log.info("Filling a Last name field");
         setElementText(lastNameField, lastName);
         return this;
     }
 
     public RegistrationRutPage fillMailField(String mail) {
+        Log.info("Filling a Mail field");
         setElementText(mailField, mail);
         return this;
     }
 
     public RegistrationRutPage fillPasswordField(String password) {
+        Log.info("Filling a Password field");
         setElementText(passwordField, password);
         return this;
     }
 
     public RegistrationRutPage fillConfirmPasswordField(String password) {
+        Log.info("Filling a Confirm password field");
         setElementText(confirmPasswordField, password);
         return this;
 
     }
 
     public RegistrationRutPage filllDField(String id) {
+        Log.info("Filling a Id field");
         setElementText(idField, id);
         return this;
     }
 
     // TODO: 01.08.2016
     public RegistrationRutPage fillBirthdayField(String birthday) {
+        Log.info("Filling a Birthday field");
         setElementText(birthdayField, birthday);
         return this;
     }
 
     public RegistrationRutPage fillMobilePhoneField(String mobilePhone) {
+        Log.info("Filling a Mobile phone field");
         setElementText(mobilePhoneField, mobilePhone);
         return this;
     }
 
     public RegistrationRutPage fillPhoneField(String phone) {
+        Log.info("Filling a Phone field");
         setElementText(phoneField, phone);
         return this;
     }
 
     public RegistrationRutPage fillStreetField(String street) {
+        Log.info("Filling a Street field");
         setElementText(streetField, street);
         return this;
     }
 
     public RegistrationRutPage fillHouseField(String house) {
+        Log.info("Filling a House field");
         setElementText(houseField, house);
         return this;
     }
 
     public RegistrationRutPage fillCityField(String city) {
+        Log.info("Filling a City field");
         setElementText(cityField, city);
         return this;
     }
 
     public RegistrationRutPage fillCountryField(String country) {
+        Log.info("Filling Country field");
         setElementText(countryField, country);
         return this;
     }
 
     public RegistrationRutPage fillClinicNameField(String clinicName) {
+        Log.info("Filling a Clinic name field");
         setElementText(clinicNameField, clinicName);
         return this;
     }
 
     //clicking on dropdowns
     public RegistrationRutPage clickOnOrganizationDropdown(String value) {
+        Log.info("Selected value in Organization dropdown");
         clickElement(organizationDropdown);
         selectValueInDropdown(organizationDropdown, value);
         return this;
@@ -217,22 +241,26 @@ public class RegistrationRutPage extends Page {
 
     //clicking on the buttons
     public RegistrationRutPage clickOnAddUserButton() {
+        Log.info("Clicking on Add user button");
         clickElement(addUserButton);
         return this;
     }
 
     public RegistrationRutPage clickOnCancellationButton() {
+        Log.info("Clicking on Cancellation button");
         clickElement(cancellationButton);
         return this;
     }
 
     //waitings
     public RegistrationRutPage waitUntilRegPageIsLoaded() throws IOException, InterruptedException {
+        Log.info("Waitining until Registration page is loaded");
         waitUntilElementIsLoaded(addUserButton);
         return this;
     }
 
     public boolean isOnRegistrationPage() throws IOException, InterruptedException {
+        Log.info("Wen are on Registration page");
         return exists(addUserButton);
     }
 }

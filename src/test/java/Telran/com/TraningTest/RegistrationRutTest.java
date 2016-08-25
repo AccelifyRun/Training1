@@ -48,13 +48,13 @@ public class RegistrationRutTest {
         Log.info("Test registrationPositive was started...");
 
         registrationRutPage
-                .fillUsernameField("0055Doctor")
+                .fillUsernameField("1155Doctor")
                 .fillFirstNameField("name")
                 .fillLastNameField("lastname")
-                .fillMailField("0055Doctor@yopmail.com")
+                .fillMailField("1155Doctor@yopmail.com")
                 .fillPasswordField("LinkCare!!11")
                 .fillConfirmPasswordField("LinkCare!!11")
-                .filllDField("423282763")
+                .filllDField("743099061")
                 .fillClinicNameField("BestClinic")
                 .fillBirthdayField("11122012")
                 .fillMobilePhoneField("1111111111")
