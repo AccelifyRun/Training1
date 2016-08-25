@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class LoginRutPage extends Page {
 
-    public static String username = "5555Doctor";
+    public static String username = "1155Doctor";
     public static String password = "LinkCare!!11";
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     //fields
@@ -60,19 +60,23 @@ public class LoginRutPage extends Page {
     }
 
     //fill the fields
-    public void fillUsernameField(String username) {
+    public LoginRutPage fillUsernameField(String username) {
         Log.info("Filling a Username field");
         setElementText(usernameField, username);
+        return this;
     }
-    public void fillPasswordField(String password) {
+
+    public LoginRutPage fillPasswordField(String password) {
         Log.info("Filling a Password field");
         setElementText(passwordField, password);
+        return this;
     }
 
     //clicking on the buttons
-    public void clickToAddNewUser() {
+    public LoginRutPage clickToAddNewUser() {
         Log.info("Clicking to addNewUser button");
         clickElement(addNewUserButton);
+        return this;
     }
 
     public LoginRutPage clickToForgotPassword() {

@@ -1,5 +1,6 @@
 package Telran.com.TraningTest;
 
+import Telran.com.DataProviders;
 import Telran.com.LogLog4j;
 import Telran.com.Training.DoctorRutPage;
 import Telran.com.Training.LoginRutPage;
@@ -48,14 +49,14 @@ public class RegistrationRutTest {
         Log.info("Test registrationPositive was started...");
 
         registrationRutPage
-                .fillUsernameField("1155Doctor")
+                .fillUsernameField("2255Doctor")
                 .fillFirstNameField("name")
                 .fillLastNameField("lastname")
-                .fillMailField("1155Doctor@yopmail.com")
+                .fillMailField("2255Doctor@yopmail.com")
                 .fillPasswordField("LinkCare!!11")
                 .fillConfirmPasswordField("LinkCare!!11")
-                .filllDField("743099061")
-                .fillClinicNameField("BestClinic")
+                .filllDField("550454433")
+                .fillClinicNameField("BestClinic2")
                 .fillBirthdayField("11122012")
                 .fillMobilePhoneField("1111111111")
                 .fillPhoneField("222222222")
@@ -69,6 +70,35 @@ public class RegistrationRutTest {
 //        Assert.assertTrue(registrationRutPage.isOnRegistrationPage(), "Something is wrong, we are on Registration Page");
         Log.info("Assert is passed");
         Log.info("Test registrationPositive stoped...");
+    }
+
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "loadNegativeDataForRegistrationRut")
+    public void registrationNegative(String username, String firstName, String lastName, String email, String password,
+                                     String confirmPassword, String id, String clinicName, String birthday, String mobile,
+                                     String phone, String street, String house) throws InterruptedException, IOException {
+        Log.info("Test registrationNegative was started..");
+
+        registrationRutPage
+                .fillUsernameField(username)
+                .fillFirstNameField(firstName)
+                .fillLastNameField(lastName)
+                .fillMailField(email)
+                .fillPasswordField(password)
+                .fillConfirmPasswordField(confirmPassword)
+                .filllDField(id)
+                .fillClinicNameField(clinicName)
+                .fillBirthdayField(birthday)
+                .fillMobilePhoneField("1111111111")
+                .fillPhoneField("222222222")
+                .fillStreetField("Morgentau")
+                .fillHouseField("5")
+                .fillCityField("Jerusalem")
+                .clickOnAddUserButton();
+        Thread.sleep(5000);
+
+        Assert.assertTrue(registrationRutPage.isOnRegistrationPage(), "Something is wrong, we are on Doctor's Page");
+        Log.info("Assert is passed");
+        Log.info("Test registrationNegative stoped...");
     }
 
     @AfterClass(alwaysRun = true)

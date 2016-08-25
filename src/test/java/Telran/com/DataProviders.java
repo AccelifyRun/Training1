@@ -246,6 +246,36 @@ public class DataProviders {
         return userData.iterator();
     }
 
+    @DataProvider
+    public static Iterator<Object[]> loadNegativeRegistrationFromFileRut() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                DataProviders.class.getResourceAsStream("/profilesNegative.data")));
+
+        List<Object[]> userData = new ArrayList<Object[]>();
+        String line = in.readLine();
+        while (line != null) {
+            userData.add(line.split(";"));
+            line = in.readLine();
+        }
+        in.close();
+        return userData.iterator();
+    }
+
+    @DataProvider
+    public static Iterator<Object[]> loadNegativeLoginFromFileRut() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                DataProviders.class.getResourceAsStream("/negativeLoginRut.data")));
+
+        List<Object[]> userData = new ArrayList<Object[]>();
+        String line = in.readLine();
+        while (line != null) {
+            userData.add(line.split(";"));
+            line = in.readLine();
+        }
+        in.close();
+        return userData.iterator();
+    }
+    //---------------End--------------------//
 
     @DataProvider
     public Iterator<Object[]> users() {
@@ -261,7 +291,6 @@ public class DataProviders {
     private Object generateRandomPassword() {
         return "pass" + new Random().nextInt();
     }
-    //---------------End--------------------//
 
     private Object generateRandomName() {
         return "demo" + new Random().nextInt();

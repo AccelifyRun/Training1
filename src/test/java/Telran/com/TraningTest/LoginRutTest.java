@@ -1,5 +1,6 @@
 package Telran.com.TraningTest;
 
+import Telran.com.DataProviders;
 import Telran.com.LogLog4j;
 import Telran.com.Training.LoginRutPage;
 import org.apache.log4j.Logger;
@@ -43,9 +44,17 @@ public class LoginRutTest {
         loginRutPage.clickToForgotPassword();
     }
 
-    @Test
-    public void loginTest() {
+    //    @Test
+    public void loginPositive() {
 
+    }
+
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "loadNegativeLoginFromFileRut")
+    public void loginNegative(String username, String password) {
+        loginRutPage
+                .fillUsernameField(username)
+                .fillPasswordField(password)
+                .clickToContinue();
     }
 
     @AfterClass(alwaysRun = true)
