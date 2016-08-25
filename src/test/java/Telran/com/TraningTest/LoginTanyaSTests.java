@@ -42,20 +42,20 @@ public class LoginTanyaSTests {
         loginTanyaSPage.clickRegisterHyperLink()
                 .fillUsernameField("Tanya")
                 .fillFirstNameField("Tanya")
-                .fillLastNameField("Sul");
-        loginTanyaSPage.fillEmailField("tan3su@gmail.com");
-        loginTanyaSPage.fillPassword("12345Tan%");
-        loginTanyaSPage.fillConfirmPassword("12345Tan%");
-        loginTanyaSPage.fillPersonalId("332441153");
-        loginTanyaSPage.clickFieldClinicAdmin();
-        loginTanyaSPage.clickFieldClinicAdmin();
-        loginTanyaSPage.fillClinicaName("Hadassa");
-        loginTanyaSPage.clickDropdownNameField();
-        loginTanyaSPage.fillBirthday("3.01.1974");
-        loginTanyaSPage.fillContactCellTxt("0525670643");
-        loginTanyaSPage.fillContactPhoneTxt("0507695005");
-        loginTanyaSPage.fillAddressTxt("Volfson");
-        loginTanyaSPage.fillHouseNumberTxt("2");
+                .fillLastNameField("Sul")
+                .fillEmailField("tan3su@gmail.com")
+                .fillPassword("12345Tan%")
+                .fillConfirmPassword("12345Tan%")
+                .fillPersonalId("332441153")
+                .clickFieldClinicAdmin()
+                .clickFieldClinicAdmin()
+                .fillClinicaName("Hadassa")
+                .clickDropdownNameField()
+                .fillBirthday("3.01.1974")
+                .fillContactCellTxt("0525670643")
+                .fillContactPhoneTxt("0507695005")
+                .fillAddressTxt("Volfson")
+                .fillHouseNumberTxt("2")
         loginTanyaSPage.fillCityTxt("ראשון לציון");
 
         // Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
