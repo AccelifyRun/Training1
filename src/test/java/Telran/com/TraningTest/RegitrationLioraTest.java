@@ -1,5 +1,6 @@
 package Telran.com.TraningTest;
 
+import Telran.com.DataProviders;
 import Telran.com.Training.*;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +13,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by Liora on 8/13/2016.
@@ -64,6 +67,31 @@ public class RegitrationLioraTest {
 
     }
 
+    @Test (dataProviderClass = DataProviders.class, dataProvider = "negativeRegistrationLiora")
+    public void registrationNegativeWithDataProvider(String userName, String firstName,String lastName,String email,String password,
+                                                     String confirmPassword,String personalId,String contactCell,
+                                                     String street,String house,String city,String clinicName,
+                                                     String number, String message) throws Exception {
+        Log.info("Negative registration test");
+        registrationLioraPage.fillUserNameField(userName)
+                .fillFirstNameField(firstName)
+                .fillLastNameField(lastName)
+                .fillEmailField(email)
+                .fillPasswordField(password)
+                .fillConfirmPasswordField(confirmPassword)
+                .fillPersonallDField(personalId)
+                .fillcontactCellField(contactCell)
+                .fillstreetField(street)
+                .fillhouseField(house)
+                .fillcityField(city)
+                .fillclinicNameField(clinicName)
+                .clickOnAddUserButton();
+        //sleep(2000);
+        Assert.assertEquals(registrationLioraPage.waitAndGetTextOfSelectedMessage(number), message, "Message is not correct");
+
+
+
+    }
 
 
     @AfterClass(alwaysRun = true)

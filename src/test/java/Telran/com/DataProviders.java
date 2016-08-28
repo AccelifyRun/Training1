@@ -275,6 +275,37 @@ public class DataProviders {
         in.close();
         return userData.iterator();
     }
+
+    @DataProvider
+    public static Iterator<Object[]> loadNegativeLoginFromFileLiora() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                DataProviders.class.getResourceAsStream("/negativeLoginLiora.data")));
+
+        List<Object[]> userData = new ArrayList<Object[]>();
+        String line = in.readLine();
+        while (line != null) {
+            userData.add(line.split(";"));
+            line = in.readLine();
+        }
+        in.close();
+        return userData.iterator();
+    }
+
+    @DataProvider
+    public static Iterator<Object[]> loadNegativeRegistrationFromFileLiora() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                DataProviders.class.getResourceAsStream("/negativeRegistrationLiora.data")));
+
+        List<Object[]> userData = new ArrayList<Object[]>();
+        String line = in.readLine();
+        while (line != null) {
+            userData.add(line.split(";"));
+            line = in.readLine();
+        }
+        in.close();
+        return userData.iterator();
+    }
+
     //---------------End--------------------//
 
     @DataProvider
