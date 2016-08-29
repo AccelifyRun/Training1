@@ -56,7 +56,7 @@ public class LoginTanyaSTests {
                 .fillContactPhoneTxt("0507695005")
                 .fillAddressTxt("Volfson")
                 .fillHouseNumberTxt("2")
-        loginTanyaSPage.fillCityTxt("ראשון לציון");
+                .fillCityTxt("ראשון לציון");
 
         // Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
         // Log.info("TestLoginWithExtData stoped....");
