@@ -4,6 +4,7 @@ import Telran.com.Training.LoginTanyaSPage;
 import Telran.com.pages.LoginPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -30,6 +31,7 @@ public class LoginTanyaSTests {
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {
 
+        driver = new ChromeDriver();
 
 
     }

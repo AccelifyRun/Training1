@@ -1,7 +1,8 @@
 package Telran.com.TraningTest;
 
 import Telran.com.DataProviders;
-import Telran.com.Training.*;
+import Telran.com.Training.LoginLioraPage;
+import Telran.com.Training.RegistrationLioraPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,8 +14,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-
-import static java.lang.Thread.sleep;
 
 /**
  * Created by Liora on 8/13/2016.
@@ -41,7 +40,7 @@ public class RegitrationLioraTest {
         driver.manage().window().maximize();
     }
 
-    @Test
+    //@Test
     public void registrationPositive() throws Exception {
         registrationLioraPage.fillUserNameField("0104Doctor")
                     .fillFirstNameField("John")
@@ -60,7 +59,7 @@ public class RegitrationLioraTest {
 
     }
 
-    @Test
+    // @Test
     public void registrationNegative() throws Exception {
         registrationLioraPage.clickOnAddUserButton()
                              .verifyRequiredFieldsValidations();

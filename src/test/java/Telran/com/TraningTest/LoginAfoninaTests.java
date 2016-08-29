@@ -1,5 +1,6 @@
 package Telran.com.TraningTest;
 
+import Telran.com.DataProviders;
 import Telran.com.Training.DoctorAfoninaPage;
 import Telran.com.Training.LoginAfoninaPage;
 import org.apache.log4j.Logger;
@@ -52,6 +53,22 @@ public class LoginAfoninaTests {
         // Log.info("TestLoginWithExtData stoped....");
     }
 
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "loadInvalidLoginFromFile")
+    public void testNegativeLogin(String username, String password) throws InterruptedException {
+
+        // Log.info("TestLoginWithExtData was started....");
+        loginAfoninaPage.waitUntilLoginButtonIsLoaded()
+                .fillUserNameField(username)
+                .fillPassword(password)
+                .clickconfirmUsingCheckBox()
+                .clickLoginButton();
+        // doctorAfoninaPage.waitUntilExitIsLoaded();
+        // Assert.assertTrue(doctorAfoninaPage.isOnDoctorPage(), "We are not is on the doctor's page");
+
+
+        // Assert.assertTrue(loginPage.isLoginUnsuccessfulAlertMessageDisplayed());
+        // Log.info("TestLoginWithExtData stoped....");
+    }
 
     @Test
     public void testNegativeLoginWithExtData() throws InterruptedException {
