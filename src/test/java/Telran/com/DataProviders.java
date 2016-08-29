@@ -247,7 +247,7 @@ public class DataProviders {
     }
 
     @DataProvider
-    public static Iterator<Object[]> loadNegativeRegistrationFromFileRut() throws IOException {
+    public static Iterator<Object[]> registrationNegativeRut() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(
                 DataProviders.class.getResourceAsStream("/profilesNegative.data")));
 
@@ -261,6 +261,20 @@ public class DataProviders {
         return userData.iterator();
     }
 
+    @DataProvider
+    public static Iterator<Object[]> registrationNegativeMessageRut() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                DataProviders.class.getResourceAsStream("/negativeRegistrationMessageRut.data")));
+
+        List<Object[]> userData = new ArrayList<Object[]>();
+        String line = in.readLine();
+        while (line != null) {
+            userData.add(line.split(";"));
+            line = in.readLine();
+        }
+        in.close();
+        return userData.iterator();
+    }
     @DataProvider
     public static Iterator<Object[]> loadNegativeLoginFromFileRut() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(

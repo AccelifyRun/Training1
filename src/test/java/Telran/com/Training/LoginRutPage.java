@@ -93,7 +93,7 @@ public class LoginRutPage extends Page {
 
     public boolean isOnLoginPage() {
         Log.info("We are on Login page");
-        return exists(continueButton);
+        return exists(addNewUserButton);
     }
 
     public LoginRutPage waitUntilLoginPageIsLoded() throws IOException, InterruptedException {
