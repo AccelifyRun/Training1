@@ -3,6 +3,7 @@ package Telran.com.TraningTest;
 
 
 import Telran.com.DataProviders;
+import Telran.com.TestNgTestBase;
 import Telran.com.Training.LoginLioraPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -43,7 +44,7 @@ public class LoginLioraTest {
         loginLioraPage.waitUntilRegPageIsLoaded();
     }
 
-    @Test (dataProviderClass = DataProviders.class,dataProvider = "negativeLoginLiora")
+    @Test (dataProviderClass = DataProviders.class,dataProvider = "loadNegativeLoginFromFileLiora")
     public void negativeLogin(String username,String password){
         loginLioraPage.fillUserNameField(username)
                 .fillUserPasswordField(password)

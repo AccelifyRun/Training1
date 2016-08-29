@@ -67,7 +67,7 @@ public class RegitrationLioraTest {
 
     }
 
-    @Test (dataProviderClass = DataProviders.class, dataProvider = "negativeRegistrationLiora")
+    @Test (dataProviderClass = DataProviders.class, dataProvider = "loadNegativeRegistrationFromFileLiora")
     public void registrationNegativeWithDataProvider(String userName, String firstName,String lastName,String email,String password,
                                                      String confirmPassword,String personalId,String contactCell,
                                                      String street,String house,String city,String clinicName,
@@ -86,11 +86,8 @@ public class RegitrationLioraTest {
                 .fillcityField(city)
                 .fillclinicNameField(clinicName)
                 .clickOnAddUserButton();
-        //sleep(2000);
+        Thread.sleep(2000);
         Assert.assertEquals(registrationLioraPage.waitAndGetTextOfSelectedMessage(number), message, "Message is not correct");
-
-
-
     }
 
 
