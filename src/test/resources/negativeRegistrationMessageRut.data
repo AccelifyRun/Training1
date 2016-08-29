@@ -1,0 +1,6 @@
+@1user;fname;lname;email@yopmail.com;LinkCare!!11;LinkCare!!11;318993045;clinicName;11122000;1111111111;222222222;street;23;city;2;אותיות ומספרים בלבד;
+user;@1fname;lname;email@yopmail.com;LinkCare!!11;LinkCare!!11;318993045;clinicName;11122000;1111111111;222222222;street;23;city;1;אותיות בלבד;
+user;fname;@1lname;email@yopmail.com;LinkCare!!11;LinkCare!!11;318993045;clinicName;11122000;1111111111;222222222;street;23;city;3;אותיות בלבד;
+user;fname;lname;email@yopmail.com;LinkCare!!11;LinkCare!!11;318993045;clinicName;11122000;1111111111;222222222;!@street;23;city;4;לא יכול להכיל תווים מיוחדים;
+user;fname;lname;email@yopmail.com;LinkCare!!11;LinkCare!!11;318993045;clinicName;11122000;1111111111;222222222;street;@!23;city;5;לא יכול להכיל תווים מיוחדים;
+user;fname;lname;email@yopmail.com;LinkCare!!11;LinkCare!!11;318993045;clinicName;11122000;1111111111;222222222;street;23;@!city;6;לא יכול להכיל תווים מיוחדים;

@@ -3,6 +3,7 @@ package Telran.com.Training;
 import Telran.com.LogLog4j;
 import Telran.com.pages.Page;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,7 +26,7 @@ public class RegistrationRutPage extends Page {
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_lastNameTxt")
     WebElement lastNameField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_Email")
-    WebElement mailField;
+    WebElement emailField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_Password")
     WebElement passwordField;
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ConfirmPassword")
@@ -111,7 +112,7 @@ public class RegistrationRutPage extends Page {
     WebElement lastNameError;   //15, only letters
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_regexEmailValid")
     WebElement mailError;       //not valid
-    @FindBy(xpath = "MainContent_RegisterUser_CreateUserStepContainer_CustomValidator2")
+    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CustomValidator2")
     WebElement emailExsistsError;   //מייל קיים במערכת
     @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CustomValidator3")
     WebElement passwordError;   // 15, סיסמא לא יכולה להכיל את שם המשתמש.
@@ -159,7 +160,7 @@ public class RegistrationRutPage extends Page {
 
     public RegistrationRutPage fillMailField(String mail) {
         Log.info("Filling a Mail field");
-        setElementText(mailField, mail);
+        setElementText(emailField, mail);
         return this;
     }
 
@@ -262,5 +263,17 @@ public class RegistrationRutPage extends Page {
     public boolean isOnRegistrationPage() throws IOException, InterruptedException {
         Log.info("Wen are on Registration page");
         return exists(addUserButton);
+    }
+
+    public boolean isIDFieldExists() throws IOException, InterruptedException {
+        Log.info("Wen are on Registration page");
+        return exists(emailField);
+    }
+
+    public String waitAndGetTextofSelectedMessage(String number) throws IOException, InterruptedException {
+        String locator = "//*[@id='MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator" + number + "']";
+        WebElement elem = driver.findElement(By.xpath(locator));
+        waitUntilElementIsLoaded(elem);
+        return elem.getText();
     }
 }

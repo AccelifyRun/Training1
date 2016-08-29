@@ -41,7 +41,8 @@ public class RegistrationRutTest {
         loginRutPage.openLoginPage();
         loginRutPage.isOnLoginPage();
         loginRutPage.clickToAddNewUser();
-        registrationRutPage.waitUntilRegPageIsLoaded();
+        registrationRutPage.isOnRegistrationPage();
+        registrationRutPage.isIDFieldExists();
     }
 
     @Test
@@ -72,10 +73,10 @@ public class RegistrationRutTest {
         Log.info("Test registrationPositive stoped...");
     }
 
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "loadNegativeDataForRegistrationRut")
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "registrationNegativeRut")
     public void registrationNegative(String username, String firstName, String lastName, String email, String password,
                                      String confirmPassword, String id, String clinicName, String birthday, String mobile,
-                                     String phone, String street, String house) throws InterruptedException, IOException {
+                                     String phone, String street, String house, String city, String number, String message) throws InterruptedException, IOException {
         Log.info("Test registrationNegative was started..");
 
         registrationRutPage
@@ -88,18 +89,50 @@ public class RegistrationRutTest {
                 .filllDField(id)
                 .fillClinicNameField(clinicName)
                 .fillBirthdayField(birthday)
-                .fillMobilePhoneField("1111111111")
-                .fillPhoneField("222222222")
-                .fillStreetField("Morgentau")
-                .fillHouseField("5")
-                .fillCityField("Jerusalem")
+                .fillMobilePhoneField(mobile)
+                .fillPhoneField(phone)
+                .fillStreetField(street)
+                .fillHouseField(house)
+                .fillCityField(city)
                 .clickOnAddUserButton();
         Thread.sleep(5000);
 
+        Assert.assertEquals(registrationRutPage.waitAndGetTextofSelectedMessage(number), message, "Message is not correct");
         Assert.assertTrue(registrationRutPage.isOnRegistrationPage(), "Something is wrong, we are on Doctor's Page");
         Log.info("Assert is passed");
         Log.info("Test registrationNegative stoped...");
     }
+
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "registrationNegativeMessageRut")
+    public void registrationNegativeMessage(String username, String firstName, String lastName, String email, String password,
+                                            String confirmPassword, String id, String clinicName, String birthday, String mobile,
+                                            String phone, String street, String house, String city, String number, String message) throws InterruptedException, IOException {
+        Log.info("Test registrationNegative was started..");
+
+        registrationRutPage
+                .fillUsernameField(username)
+                .fillFirstNameField(firstName)
+                .fillLastNameField(lastName)
+                .fillMailField(email)
+                .fillPasswordField(password)
+                .fillConfirmPasswordField(confirmPassword)
+                .filllDField(id)
+                .fillClinicNameField(clinicName)
+                .fillBirthdayField(birthday)
+                .fillMobilePhoneField(mobile)
+                .fillPhoneField(phone)
+                .fillStreetField(street)
+                .fillHouseField(house)
+                .fillCityField(city)
+                .clickOnAddUserButton();
+        Thread.sleep(7000);
+
+        Assert.assertEquals(registrationRutPage.waitAndGetTextofSelectedMessage(number), message, "Message is not correct");
+        Assert.assertTrue(registrationRutPage.isOnRegistrationPage(), "Something is wrong, we are on Doctor's Page");
+        Log.info("Assert is passed");
+        Log.info("Test registrationNegative stopped...");
+    }
+
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
