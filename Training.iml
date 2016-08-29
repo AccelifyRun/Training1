@@ -22,7 +22,7 @@
     <orderEntry type="library" name="Maven: com.beust:jcommander:1.48" level="project" />
     <orderEntry type="library" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" name="Maven: com.github.yev:screenshot:0.2" level="project" />
-    <orderEntry type="library" name="Maven: ru.stqa.selenium:webdriver-factory:2.0" level="project" />
+    <orderEntry type="library" name="Maven: ru.stqa.selenium:webdriver-factory:2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-support:2.53.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:2.53.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: cglib:cglib-nodep:2.1_3" level="project" />
