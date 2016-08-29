@@ -1,7 +1,9 @@
 package Telran.com.TraningTest;
 
+import Telran.com.LogLog4j;
 import Telran.com.Training.DoctorRutPage;
 import Telran.com.Training.LoginRutPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -13,10 +15,11 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 /**
- * Created by rutg on 09.08.2016.
+ * Created by rut on 09.08.2016.
  */
 public class DoctorRutTest {
-    //    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
+
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     public LoginRutPage loginRutPage;
     public DoctorRutPage doctorRutPage;
     public WebDriver driver;
@@ -38,6 +41,7 @@ public class DoctorRutTest {
 
     @Test
     public void addPatient() {
+        Log.info("Clicking to Add patient button");
         doctorRutPage.clickToAddPatient();
 //        Assert.assertTrue();
     }

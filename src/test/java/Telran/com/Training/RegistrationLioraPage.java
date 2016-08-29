@@ -2,6 +2,7 @@ package Telran.com.Training;
 
 import Telran.com.TraningTest.LogLog4j;
 import Telran.com.pages.Page;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -97,6 +98,20 @@ public class RegistrationLioraPage extends Page{
     @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_RequiredFieldValidator4")
     WebElement noCityLabel; //עיר חובה
 
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_regexEmailValid")
+            WebElement incorrectEmail; //פורמט מייל לא תקני
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_CustomValidator3")
+    WebElement incorrectPassword; //סיסמא לא יכולה להכיל את שם המשתמש.
+    @FindBy (id = "MainContent_RegisterUser_CreateUserStepContainer_PasswordCompare")
+    WebElement notTheSameConfirmPassword; //אשור סיסמה חייב להתאים לסיסמה.
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_CVPersonalId")
+    WebElement incorrectPersonalId; //מספר זהות לא חוקי
+    @FindBy (id ="MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator2")
+    WebElement incorrectUserName; //אותיות ומספרים בלבד
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator1")
+    WebElement incorrectFirstName; //אותיות בלבד
+    @FindBy (id="MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator3")
+    WebElement incorrectSurname; //אותיות בלבד
 
     public RegistrationLioraPage(WebDriver driver) {
         super(driver);
@@ -107,6 +122,14 @@ public class RegistrationLioraPage extends Page{
         Log.info("Opened 'Registration Page'");
         return this;
     }
+
+    public String waitAndGetTextOfSelectedMessage(String number) throws IOException, InterruptedException {
+        String locator = "MainContent_RegisterUser_CreateUserStepContainer_RegularExpressionValidator"+number;
+        WebElement elem = driver.findElement(By.id(locator));
+        waitUntilElementIsLoaded(elem);
+        return elem.getText();
+    }
+
 
     //enter text
     public RegistrationLioraPage fillUserNameField(String userName) {

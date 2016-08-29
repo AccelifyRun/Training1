@@ -2,14 +2,13 @@ package Telran.com.TraningTest;
 
 
 
+import Telran.com.DataProviders;
 import Telran.com.Training.LoginLioraPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import java.util.logging.Logger;
 
 
@@ -42,6 +41,14 @@ public class LoginLioraTest {
 
         loginLioraPage.clickToAddNewUser();
         loginLioraPage.waitUntilRegPageIsLoaded();
+    }
+
+    @Test (dataProviderClass = DataProviders.class,dataProvider = "negativeLoginLiora")
+    public void negativeLogin(String username,String password){
+        loginLioraPage.fillUserNameField(username)
+                .fillUserPasswordField(password)
+                .clickLoginButton();
+        Log.info("Check login validation");
     }
 
     @Test
