@@ -1,6 +1,9 @@
+
 package Telran.com.Training;
 
+import Telran.com.TraningTest.LogLog4j;
 import Telran.com.pages.Page;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,146 +15,84 @@ import java.io.IOException;
  * Created by Lena on 7/28/2016.
  */
 public class LoginLenaPage extends Page {
-
-
-    @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
-    WebElement registerHyperLink;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_UserName")
-    WebElement usernameField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_firstNameTxt")
-    WebElement firstnameField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_lastNameTxt")
-    WebElement lastnameField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_Email")
-    WebElement emailField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_Password")
-    WebElement passwordField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_ConfirmPassword")
-    WebElement confirmPasswordField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_PersonalIdTxt")
-    WebElement personalIdField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_rolesDDl")
-    WebElement userroleField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_IsClinicAdmin")
-    WebElement clikpositionclinicAdmin;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_clinicNameTxt")
-    WebElement clinicnameField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_OrganizationDDL")
-    WebElement organizationTypeDropDown;
-    @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_birthdayTxt_dateInput")
-    WebElement birthdayDateField;
-    @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_birthdayTxt_CalendarPopupButton")
-    WebElement calendarpopupButton;
-    @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactCellTxt")
-    WebElement contactCellField;
-    @FindBy(id = "ctl00_MainContent_RegisterUser_CreateUserStepContainer_ContactPhoneTxt")
-    WebElement contactPhoneField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_AddressTxt")
-    WebElement adressField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_HouseNumberTxt")
-    WebElement houseNumberField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CityTxt")
-    WebElement cityField;
-    @FindBy(id = "MainContent_RegisterUser_CreateUserStepContainer_CountryTxt")
-    WebElement countryField;
-    @FindBy(id = "MainContent_AddNewUser")
-    WebElement addnewuserClik;
-    @FindBy(id = "MainContent_LinkButton1")
-    WebElement cancellinkbuttonClik;
-    @FindBy(id = "Top1_HeadLoginStatus")
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
+    @FindBy(id = "MainContent_LoginUser_UserName")
+    WebElement loginUserNameField;
+    @FindBy(id = "MainContent_LoginUser_Password")
+    WebElement loginUserPasswordField;
+    @FindBy(id = "MainContent_LoginUser_LoginButton")
     WebElement loginButton;
+    @FindBy(id = "MainContent_LoginUser_RegisterHyperLink")
+    WebElement registerUser;
+    @FindBy(xpath = "//div[@class=\"loginInfo\"]//a[@class=\"forgot\"]")
+    WebElement forgotPassword;
+    @FindBy(id = "MainContent_LoginUser_CBAgreeToTerms")
+    WebElement confirmUsingCheckBox;
+    @FindBy(xpath = "//div[@class=\"loginInfo\"]//a[@target=\"_blank\"]")
+    WebElement conditionConfirmUsing;
+    @FindBy(xpath = "//div[@class=\"loginInfo\"]//a[@href=\"LoginOTP.aspx\"] ")
+    WebElement QTP;
+    //doctorPage
+    @FindBy(id = "MainContent_ItemLinkButton3")
+    WebElement exitButton;
 
     public LoginLenaPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public void clickRegisterUser() {
-        clickElement(registerHyperLink);
+    public LoginLenaPage fillLoginUserName(String userName) {
+        setElementText(loginUserNameField, userName);
+        Log.info("Filling login user name");
+        return this;
     }
 
-    public void filluserName(String username) {
-        setElementText(usernameField, username);
+    public LoginLenaPage fillLoginUserPassword(String userPassword) {
+        setElementText(loginUserPasswordField, userPassword);
+        Log.info("Filling user password");
+        return this;
     }
 
-    public void filluserfirstName(String firstname) {
-        setElementText(firstnameField, firstname);
+    public LoginLenaPage clickLoginButton() {
+
+        clickElement(loginButton);
+        Log.info("Click 'login' button");
+        return this;
     }
 
-    public void filluserlastName(String lastname) {
-        setElementText(lastnameField, lastname);
+    public LoginLenaPage clickRegisterUser() {
+        clickElement(registerUser);
+        Log.info("Click 'register' button");
+        return this;
     }
 
-    public void fillemailField(String email) {
-        setElementText(emailField, email);
+    public LoginLenaPage clickForgotPassword() {
+        clickElement(forgotPassword);
+        Log.info("Click 'Forgot your password?'");
+        return this;
     }
 
-    public void fillpasswordField(String password) {
-        setElementText(passwordField, password);
+    public LoginLenaPage clickConfirmUsing() {
+        clickElement(confirmUsingCheckBox);
+        Log.info("Click 'check box' button");
+        return this;
     }
 
-    public void fillconfirmpasswordFiel(String password) {
-        setElementText(confirmPasswordField, password);
+    public LoginLenaPage clickConditionConfirmUsing() {
+        clickElement(conditionConfirmUsing);
+        Log.info("Click 'condition confirm using'");
+        return this;
     }
 
-    public void fillpersonalId(String id) {
-        setElementText(personalIdField, id);
+    public LoginLenaPage openLoginPage() {
+        driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx?returnUrl=%2fLandingPage.aspx");
+        //driver.get("http://dhclinicappv2stg.item-soft.co.il/Login.aspx");
+        Log.info("'Login page' loaded successfully");
+        return this;
     }
 
-    public void clickuserRole() {
-        clickElement(userroleField);
-    }
-
-    public void clickposition() {
-        clickElement(clikpositionclinicAdmin);
-    }
-
-    public void fillClinikName(String clinikName) {
-        setElementText(clinicnameField, clinikName);
-    }
-
-    public void clickOrganizationType() {
-        clickElement(organizationTypeDropDown);
-        selectValueInDropdown(organizationTypeDropDown, "2");
-    }
-
-    public void fillbirthdayDate(String date) {
-        setElementText(birthdayDateField, date);
-    }
-
-    public void fillCellPhon(String cellphonevalue) {
-        setElementText(contactCellField, cellphonevalue);
-    }
-
-    public void fillcontactPhone(String phonevalue) {
-        setElementText(contactPhoneField, phonevalue);
-    }
-
-    public void fillAdress(String adress) {
-        setElementText(adressField, adress);
-    }
-
-    public void fillHouseNumber(String number) {
-        setElementText(houseNumberField, number);
-    }
-
-    public void fillCity(String city) {
-        setElementText(cityField, city);
-    }
-
-    public void fillCountry(String country) {
-        setElementText(countryField, country);
-    }
-
-    public void clickNewUser() {
-        clickElement(addnewuserClik);
-    }
-
-    public void clickCancelButton() {
-        clickElement(cancellinkbuttonClik);
-    }
-
-    public LoginLenaPage waitUntilLoginPageIsLoaded() {
+    //implicid waite method (waitUntilElementIsLoaded)
+    public LoginLenaPage waitUntilLoginButtonIsLoaded() {
         try {
             waitUntilElementIsLoaded(loginButton);
         } catch (IOException e) {
@@ -163,6 +104,10 @@ public class LoginLenaPage extends Page {
         return this;
     }
 
+    public boolean isOnLoginPage() {
+        Log.info("On Login page");
+        return exists(exitButton);
+    }
 
 
 }
