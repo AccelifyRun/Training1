@@ -75,7 +75,6 @@ public class DataProviders {
         return userData.iterator();
     }
 
-
     @DataProvider
     public static Iterator<Object[]> loadGrafFromFile() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -275,6 +274,7 @@ public class DataProviders {
         in.close();
         return userData.iterator();
     }
+
     @DataProvider
     public static Iterator<Object[]> loadNegativeLoginFromFileRut() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -318,6 +318,16 @@ public class DataProviders {
         }
         in.close();
         return userData.iterator();
+    }
+
+    @DataProvider
+
+    public Object[][] Authentication() throws Exception {
+
+        Object[][] testObjArray = ExcelUtils.getTableArray("D://ToolsQA//OnlineStore//src//testData//TestData.xlsx", "Sheet1");
+
+        return (testObjArray);
+
     }
 
     //---------------End--------------------//
